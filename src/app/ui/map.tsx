@@ -4,10 +4,11 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect } from "react";
 
 export default function MapBackground() {
-  const mapToken = process.env.NEXT_PUBLIC_MAP_TOKEN;
-  console.log(mapToken);
+  const mapToken = process.env.NEXT_PUBLIC_MAPTOKEN;
 
   useEffect(() => {
+    mapboxgl.accessToken = mapToken;
+
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/standard",
