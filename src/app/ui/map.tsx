@@ -2,6 +2,7 @@
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect } from "react";
+import Sidebar from "./sidebar/sidebar";
 
 export default function MapBackground() {
   const mapToken = process.env.NEXT_PUBLIC_MAPTOKEN;
@@ -30,8 +31,9 @@ export default function MapBackground() {
   }, []);
 
   return (
-    <>
-      <div className="w-screen h-screen" id="map"></div>
-    </>
+    <div className="w-screen h-screen flex justify-end">
+      <Sidebar />
+      <div className="w-3/4 h-full" id="map"></div>
+    </div>
   );
 }
