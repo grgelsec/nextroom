@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { motion } from "motion/react";
-
+import { AnimatePresence, motion } from "motion/react";
+//keys tell react when a component is 'truly new'.
 export default function Sidebar() {
   const [sidebarVisibility, setSideBarVisibility] = useState(false);
   return (
-    <>
+    <AnimatePresence mode="wait">
       {sidebarVisibility ? (
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
+          exit={{ scale: 0 }}
+          key={"inactive"}
           className="flex flex-col flex-wrap lg:w-1/4 h-full bg-black"
         >
           <header className="flex lg:w-full h-1/6 justify-center p-4">
@@ -45,6 +47,8 @@ export default function Sidebar() {
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
+          exit={{ scale: 0 }}
+          key={"active"}
           className="flex flex-col flex-wrap lg:w-1/4 h-full bg-black"
         >
           <header className="flex lg:w-full h-1/6 justify-center p-4">
@@ -53,8 +57,8 @@ export default function Sidebar() {
             </div>
           </header>
           <div className="flex flex-col lg:w-full h-4/6 justify-center ring p-4 space-y-4">
-            <div className="flex lg:w-full h-1/2 ring p-2"></div>
-            <div className="flex lg:w-full h-1/2 ring p-2"></div>
+            <div className="flex lg:w-full h-1/2 ring p-2 bg-white">test</div>
+            <div className="flex lg:w-full h-1/2 ring p-2 bg-white">test</div>
           </div>
           <footer className="flex lg:w-full h-1/6 justify-center items-center p-4">
             <button
@@ -82,6 +86,6 @@ export default function Sidebar() {
           </footer>
         </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 }
