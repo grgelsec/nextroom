@@ -3,6 +3,7 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect } from "react";
 import Sidebar from "./sidebar/sidebar";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function MapBackground() {
   const mapToken = process.env.NEXT_PUBLIC_MAPTOKEN;
@@ -33,7 +34,14 @@ export default function MapBackground() {
   return (
     <div className="w-screen h-screen flex justify-end">
       <Sidebar />
-      <div className="w-3/4 h-full" id="map"></div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="w-3/4 h-full"
+        id="map"
+      ></motion.div>
     </div>
   );
 }

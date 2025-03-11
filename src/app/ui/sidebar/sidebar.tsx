@@ -57,8 +57,8 @@ export default function Sidebar() {
             </div>
           </header>
           <div className="flex flex-col lg:w-full h-4/6 justify-center ring p-4 space-y-4">
-            <div className="flex lg:w-full h-1/2 ring p-2 bg-white">test</div>
-            <div className="flex lg:w-full h-1/2 ring p-2 bg-white">test</div>
+            <div className="flex lg:w-full h-1/2 ring p-2"></div>
+            <div className="flex lg:w-full h-1/2 ring p-2"></div>
           </div>
           <footer className="flex lg:w-full h-1/6 justify-center items-center p-4">
             <button
