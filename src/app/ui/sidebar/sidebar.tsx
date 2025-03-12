@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { AvailableRooms } from "@/app/types";
 //keys tell react when a component is 'truly new'.
 export default function Sidebar() {
   const [sidebarVisibility, setSideBarVisibility] = useState(false);
-  const [roomData, setRoomData] = useState(null);
+  const [roomData, setRoomData] = useState<AvailableRooms[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function Sidebar() {
       try {
         const res = await fetch(`/api/scrape`);
         const data = await res.json();
-        console.log(data);
+        console.log(data.data);
         setRoomData(data.data);
       } catch (error) {
         console.error("Error fetching room data: ", error);
@@ -28,6 +29,9 @@ export default function Sidebar() {
   useEffect(() => {
     console.log(loading);
   }, [loading]);
+
+  console.log(roomData[0]);
+
   return (
     <AnimatePresence mode="wait">
       {sidebarVisibility ? (
