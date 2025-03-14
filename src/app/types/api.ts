@@ -1,11 +1,9 @@
-type room = {
+export type room = {
   availability: string;
   date: string;
   room: string;
 };
 
-interface AvailableRooms {
+export interface AvailableRooms {
   rooms: room[];
 }
-
-export default
