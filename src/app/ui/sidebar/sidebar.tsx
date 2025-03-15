@@ -41,26 +41,17 @@ export default function Sidebar() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           key={"inactive"}
-          className="flex flex-col flex-wrap lg:w-1/4 h-full bg-black"
+          className="flex flex-col flex-wrap lg:w-1/4 h-full bg-gradient-to-br from-white/5 to-white/8 ring"
         >
-          <header className="flex lg:w-full h-1/6 justify-center p-4">
-            <div className="flex justify-center items-center w-full rounded-lg bg-white/15">
-              <h1 className="text-white text-4xl font-mono">Nextroom</h1>
-            </div>
-          </header>
-          <div className="flex flex-col lg:w-full h-4/6 justify-center p-6 space-y-4 overflow-scroll">
-            {roomData.slice(0, 1).map((room) => (
-              <RoomCard
-                key={room.room}
-                availability={room.availability}
-                room={room.room}
-                date={room.date}
-              />
+          {/* <header className="flex lg:w-full justify-center p-4 ring bg-transparent"></header> */}
+          <div className="flex flex-col lg:w-full h-5/6 p-6 pt-6 space-y-4 overflow-y-auto ">
+            {roomData.map((room) => (
+              <RoomCard key={room.room} room={room.room} times={room.times} />
             ))}
           </div>
-          <footer className="flex lg:w-full h-1/6 justify-center items-center p-4 back">
+          <footer className="flex lg:w-full mt-10 justify-center ring p-4">
             <button
-              className="flex justify-center items-center lg:w-1/2 bg-white/15 rounded-lg hover:bg-white/10 hover:ring-2 hover:ring-white duration-300 p-4"
+              className="flex justify-center items-center lg:w-1/2 rounded-lg hover:bg-white/10 hover:ring-2 hover:ring-white duration-300 p-4 shadow-2xl bg-white/1"
               onClick={(e) => {
                 e.preventDefault();
                 setSideBarVisibility(false);
@@ -89,7 +80,7 @@ export default function Sidebar() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           key={"active"}
-          className="flex flex-col flex-wrap lg:w-1/4 h-full bg-black"
+          className="flex flex-col flex-wrap lg:w-1/4 h-full bg-gradient-to-br from-white/5 to-white/8"
         >
           <header className="flex lg:w-full h-1/6 justify-center p-4">
             <div className="flex justify-center items-center w-full rounded-lg bg-white/15">
@@ -102,9 +93,9 @@ export default function Sidebar() {
             </div>
             <div className="flex lg:w-full h-1/2  p-2"></div>
           </div>
-          <footer className="flex lg:w-full h-1/6 justify-center items-center p-4">
+          <footer className="flex lg:w-full mt-10 justify-center ring p-4">
             <button
-              className="flex justify-center items-center lg:w-1/2 bg-white/15 rounded-lg hover:bg-white/10 hover:ring-2 hover:ring-white duration-300 p-4"
+              className="flex justify-center items-center lg:w-1/2 rounded-lg hover:bg-white/10 hover:ring-2 hover:ring-white duration-300 p-4 shadow-2xl bg-white/1"
               onClick={(e) => {
                 e.preventDefault();
                 setSideBarVisibility(true);
