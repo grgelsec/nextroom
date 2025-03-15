@@ -7,6 +7,7 @@ export const RoomCard = ({ availability, date, room }: room) => {
       </h1>
       <div className="flex lg:w-full">
         <h2 className="w-full text-sm">Available Times</h2>
+        {date}
       </div>
     </div>
   );

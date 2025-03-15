@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { AvailableRooms, room } from "@/app/types";
+import { room } from "@/app/types";
 import { RoomCard } from "./roomCard";
 //keys tell react when a component is 'truly new'.
 export default function Sidebar() {
@@ -49,7 +49,7 @@ export default function Sidebar() {
             </div>
           </header>
           <div className="flex flex-col lg:w-full h-4/6 justify-center p-6 space-y-4 overflow-scroll">
-            {roomData.map((room) => (
+            {roomData.slice(0, 1).map((room) => (
               <RoomCard
                 key={room.room}
                 availability={room.availability}
@@ -58,7 +58,7 @@ export default function Sidebar() {
               />
             ))}
           </div>
-          <footer className="flex lg:w-full h-1/6 justify-center items-center p-4">
+          <footer className="flex lg:w-full h-1/6 justify-center items-center p-4 back">
             <button
               className="flex justify-center items-center lg:w-1/2 bg-white/15 rounded-lg hover:bg-white/10 hover:ring-2 hover:ring-white duration-300 p-4"
               onClick={(e) => {
@@ -96,9 +96,11 @@ export default function Sidebar() {
               <h1 className="text-white text-4xl font-mono">Nextroom</h1>
             </div>
           </header>
-          <div className="flex flex-col lg:w-full h-4/6 justify-center ring p-4 space-y-4">
-            <div className="flex lg:w-full h-1/2 ring p-2"></div>
-            <div className="flex lg:w-full h-1/2 ring p-2"></div>
+          <div className="flex flex-col lg:w-full h-4/6 justify-center font-mono p-4 space-y-4">
+            <div className="flex lg:w-full h-1/2  p-2">
+              This will be a hero section.
+            </div>
+            <div className="flex lg:w-full h-1/2  p-2"></div>
           </div>
           <footer className="flex lg:w-full h-1/6 justify-center items-center p-4">
             <button
