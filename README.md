@@ -6,16 +6,15 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 
 - Stick with the current design I have in figma.
 - Implement these features in order
-  - Sidebar room availability
   - Map popups containing available times.
   - Full availbility view page with all rooms and their availabilities.
 
 ## TODO for current feature - Sidebar room availbility 📋
 
-- Fix the API so that it returns the next 3-4 available times.
-
+- Touch up Side Bar availability and make it look better and fix the html/w/h (make it responsive)
+  -fix the layout and make the button on the bottom less ugly, fix the bg and make the button just overlay
 - Add a key for red being available and red unavailable.
 
 ## Current Bugs 🐛
 
-- Available endpoint is returning "Unavailable/Padding" just need "Unavailable"
+- Rooms that dont have a time are showing nothing - low prio

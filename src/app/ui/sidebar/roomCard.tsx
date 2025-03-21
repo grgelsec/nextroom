@@ -2,7 +2,7 @@ import { room } from "@/app/types";
 
 export const RoomCard = ({ room, times }: room) => {
   return (
-    <div className="flex flex-col flex-wrap lg:w-full h-1/2 p-4 bg-gradient-to-br from-white/10 to-white/20 rounded-md font-mono space-y-4">
+    <div className="flex flex-col flex-wrap lg:w-full p-4 bg-gradient-to-tl from-white/10 to-white/20 rounded-md font-light space-y-4">
       <h1 className=" flex justify-items-start lg:w-full  space-x-2">
         <p>{room}</p>
 
@@ -13,11 +13,11 @@ export const RoomCard = ({ room, times }: room) => {
         </p>
       </h1>
       {times.slice(1, 6).map((room) => (
-        <div key={room.date} className="flex flex-col lg:w-full flex-wrap">
+        <div key={room.date} className="flex flex-col lg:w-full flex-wrap ">
           {room.date != null ? (
-            <p
+            <div
               key={room.date}
-              className={`${
+              className={`flex justify-center ${
                 room.reserved == "Available"
                   ? `text-sm ring-2 p-2 rounded-xl ring-green-400
   shadow-[0_0_8px_rgba(52,211,153,0.7),0_0_15px_rgba(16,185,129,0.4)] text-white
@@ -30,7 +30,7 @@ export const RoomCard = ({ room, times }: room) => {
               }`}
             >
               {room.date}
-            </p>
+            </div>
           ) : (
             <p>Room not Available</p>
           )}

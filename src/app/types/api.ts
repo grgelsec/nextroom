@@ -3,7 +3,7 @@ export type room = {
   times: availability[];
 };
 
-type availability = {
+export type availability = {
   date: string | undefined;
   reserved: string | undefined;
 };
