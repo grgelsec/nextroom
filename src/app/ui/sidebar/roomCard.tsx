@@ -2,7 +2,7 @@ import { room } from "@/app/types";
 
 export const RoomCard = ({ room, times }: room) => {
   return (
-    <div className="flex flex-col flex-wrap lg:w-full p-4 bg-gradient-to-br from-white/10 to-white/15 rounded-md space-y-4 font-extralight">
+    <div className="flex flex-col flex-wrap lg:w-full p-4 bg-gradient-to-tl from-white/10 to-white/15 rounded-md space-y-4 font-extralight">
       <h1 className=" flex justify-items-start lg:w-full  space-x-2">
         <p>{room}</p>
 
