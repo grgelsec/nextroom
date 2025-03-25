@@ -41,7 +41,7 @@ export default function Sidebar() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           key={"inactive"}
-          className="flex flex-col flex-wrap lg:w-1/4 lg:h-screen  bg-gradient-to-br from-black to-white/5 items-end"
+          className="flex flex-col flex-wrap lg:w-1/4 lg:h-screen  bg-gradient-to-b from-black to-white/5 items-end"
         >
           <header className="flex lg:w-full justify-center p-4 h-1/12 text-white font-extralight items-end ">
             Available: ✅ | Booked: 🚫
@@ -82,7 +82,7 @@ export default function Sidebar() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           key={"active"}
-          className="flex flex-col flex-wrap lg:w-1/4 h-full bg-gradient-to-br from-black to-white/20 font-extralight"
+          className="flex flex-col flex-wrap lg:w-1/4 h-full bg-gradient-to-bl from-black to-white/20 font-extralight"
         >
           <header className="flex lg:w-full h-2/12 justify-center p-4">
             <div className="flex justify-center items-center w-full rounded-lg shadow-2xl">
