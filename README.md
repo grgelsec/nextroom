@@ -9,11 +9,21 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
   - Map popups containing available times.
   - Full availbility view page with all rooms and their availabilities.
 
-## TODO for current feature - Sidebar room availbility 📋
+## 3/26
 
-- Touch up Side Bar availability and make it look better and fix the html/w/h (make it responsive)
-  -fix the layout and make the button on the bottom less ugly, fix the bg and make the button just overlay
-- Add a key for red being available and red unavailable.
+- Figure out how to make the popups look how you want them to
+- Display the room number, availability, and the next available time in the room pop up
+- When I click on a room card then it activates a pop up.
+- Add a book now link to the top of the side bar
+
+## 3/27
+
+- Create the view all page that has all of the rooms and availability with the info at the top and a book now link.
+
+## 3/28
+
+- Finish the landing hero bar
+- Make the side bar be a modal for moble viewers - might take a minute haha
 
 ## Current Bugs 🐛
 
