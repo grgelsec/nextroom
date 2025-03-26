@@ -1,41 +1,124 @@
 import { room } from "@/app/types";
+import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 
 export const RoomCard = ({ room, times }: room) => {
+  const [cardExtend, setCardExtend] = useState(true);
+  const transition = {
+    duration: 0.8,
+    delay: 0.05,
+    ease: [0, 0.71, 0.2, 1.01],
+  };
+  const transitionInsideCard = {
+    duration: 0.2,
+    delay: 0.05,
+    ease: [0, 0.71, 0.2, 1.01],
+  };
   return (
-    <div className="flex flex-col flex-wrap lg:w-full p-4 bg-gradient-to-tl from-white/10 to-white/15 rounded-md space-y-4 font-extralight">
-      <h1 className=" flex justify-items-start lg:w-full  space-x-2">
-        <p>{room}</p>
-
-        <p>
-          {times
-            .slice(1, 2)
-            .map((room) => (room.reserved == "Available" ? <>✅</> : <>🚫</>))}
-        </p>
-      </h1>
-      {times.slice(1, 6).map((room) => (
-        <div key={room.date} className="flex flex-col lg:w-full flex-wrap ">
-          {room.date != null ? (
-            <div
-              key={room.date}
-              className={`flex justify-center ${
-                room.reserved == "Available"
-                  ? `text-sm ring-2 p-2 rounded-xl ring-green-400
-  shadow-[0_0_8px_rgba(52,211,153,0.7),0_0_15px_rgba(16,185,129,0.4)] text-white
-  hover:shadow-[0_0_10px_rgba(52,211,153,0.8),0_0_20px_rgba(16,185,129,0.5)]
-  transition-all duration-300`
-                  : `text-sm ring-2 p-2 rounded-xl ring-red-400
-  shadow-[0_0_8px_rgba(248,113,113,0.7),0_0_15px_rgba(220,38,38,0.4)] text-white
-  hover:shadow-[0_0_10px_rgba(248,113,113,0.8),0_0_20px_rgba(220,38,38,0.5)]
-  transition-all duration-300`
-              }`}
-            >
-              {room.date}
+    <AnimatePresence>
+      <motion.div
+        initial={{ y: 100 }}
+        animate={{ y: 0 }}
+        transition={transition}
+        className="flex flex-col flex-wrap lg:w-full p-6 bg-[#191919] shadow-2xl rounded-md space-y-4 font-extralight"
+      >
+        <div key={"openCard"} className="space-y-4">
+          <h1 className=" flex justify-items-start lg:w-full">
+            <div className="space-x-2 flex w-1/2">
+              <p>{room}</p>
+              <p>
+                {times
+                  .slice(1, 2)
+                  .map((room) =>
+                    room.reserved == "Available" ? (
+                      <a key={"true"}>✅</a>
+                    ) : (
+                      <a key={"false"}>🚫</a>
+                    )
+                  )}
+              </p>
             </div>
+            <motion.button
+              whileTap={{ rotate: 3 }}
+              className="flex w-1/2 justify-end"
+              onClick={(e) => {
+                e.preventDefault();
+                setCardExtend(!cardExtend);
+              }}
+            >
+              {cardExtend ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5 8.25 12l7.5-7.5"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              )}
+            </motion.button>
+          </h1>
+          {cardExtend ? (
+            <></>
           ) : (
-            <p>Room not Available</p>
+            <motion.div
+              initial={{ y: -20 }}
+              animate={{ y: 0 }}
+              transition={transitionInsideCard}
+              className="space-y-4"
+            >
+              {times.slice(1, 6).map((room) => (
+                <div
+                  key={room.date}
+                  className="flex flex-col lg:w-full flex-wrap"
+                >
+                  {room.date != null ? (
+                    <div
+                      key={room.date}
+                      className={`flex justify-center ${
+                        room.reserved == "Available"
+                          ? `text-sm ring-2 p-2 rounded-xl ring-green-400
+                            shadow-[0_0_8px_rgba(52,211,153,0.7),0_0_15px_rgba(16,185,129,0.4)] text-white
+                            hover:shadow-[0_0_10px_rgba(52,211,153,0.8),0_0_20px_rgba(16,185,129,0.5)]
+                            transition-all duration-300`
+                          : `text-sm ring-2 p-2 rounded-xl ring-red-400
+                            shadow-[0_0_8px_rgba(248,113,113,0.7),0_0_15px_rgba(220,38,38,0.4)] text-white
+                            hover:shadow-[0_0_10px_rgba(248,113,113,0.8),0_0_20px_rgba(220,38,38,0.5)]
+                            transition-all duration-300`
+                      }`}
+                    >
+                      {room.date}
+                    </div>
+                  ) : (
+                    <p>Room not Available</p>
+                  )}
+                </div>
+              ))}
+            </motion.div>
           )}
         </div>
-      ))}
-    </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };

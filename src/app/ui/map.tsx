@@ -31,11 +31,17 @@ export default function MapBackground() {
 
     const popupElement = document.createElement("div");
     popupElement.className =
-      "flex bg-white rounded-lg shadow-lg p-4 text-gray-800 background-transparent";
-    popupElement.innerHTML =
-      '<h3 class="font-bold">Marker Title</h3><p>This is a description of the marker.</p>';
+      "flex flex-col bg-black w-full h-full rounded-lg p-8"; // Tailwind classes for styling
+    popupElement.innerHTML = `
+  <h3 class="font-bold text-lg">Marker Title</h3>
+  <p class="text-sm">This is a description of the marker.</p>
+`;
 
-    const popup = new mapboxgl.Popup() // Adjust the offset as needed
+    const popup = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false,
+      offset: 15,
+    }) // Adjust the offset as needed
       .setDOMContent(popupElement);
 
     new mapboxgl.Marker(markerEle)
@@ -46,5 +52,10 @@ export default function MapBackground() {
     return () => map.remove();
   }, []);
 
-  return <div className="w-3/4 h-full" id="map"></div>;
+  return (
+    <div
+      className="flex lg:w-3/4 md:w-3/4 w-full lg:h-full md:h-full h-1/2 rounded-lg"
+      id="map"
+    ></div>
+  );
 }
