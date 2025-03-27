@@ -43,7 +43,7 @@ export default function Sidebar() {
     <AnimatePresence mode="wait">
       {sidebarVisibility ? (
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={transition}
@@ -86,7 +86,7 @@ export default function Sidebar() {
         </motion.div>
       ) : (
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={transition}

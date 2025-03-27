@@ -4,25 +4,30 @@ import { AnimatePresence, motion } from "motion/react";
 
 export const RoomCard = ({ room, times }: room) => {
   const [cardExtend, setCardExtend] = useState(true);
-  const transition = {
-    duration: 0.8,
-    delay: 0.05,
-    ease: [0, 0.71, 0.2, 1.01],
-  };
-  const transitionInsideCard = {
-    duration: 0.2,
-    delay: 0.05,
-    ease: [0, 0.71, 0.2, 1.01],
-  };
+
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ y: 100 }}
+        initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={transition}
+        transition={{
+          duration: 0.8,
+          delay: 0.01,
+          ease: [0, 0.71, 0.3, 1.01],
+        }}
         className="flex flex-col flex-wrap lg:w-full p-6 bg-[#191919] shadow-2xl rounded-md space-y-4 font-extralight"
       >
-        <div key={"openCard"} className="space-y-4">
+        <motion.div
+          key={"openCard"}
+          className="space-y-4"
+          initial={{ y: 30 }}
+          animate={{ y: 0 }}
+          transition={{
+            duration: 2,
+            delay: 0.05,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        >
           <h1 className=" flex justify-items-start lg:w-full">
             <div className="space-x-2 flex w-1/2">
               <p>{room}</p>
@@ -82,14 +87,16 @@ export const RoomCard = ({ room, times }: room) => {
           {cardExtend ? (
             <></>
           ) : (
-            <motion.div
-              initial={{ y: -20 }}
-              animate={{ y: 0 }}
-              transition={transitionInsideCard}
-              className="space-y-4"
-            >
+            <div className="space-y-4">
               {times.slice(1, 6).map((room) => (
-                <div
+                <motion.div
+                  initial={{ y: -30 }}
+                  animate={{ y: 0 }}
+                  transition={{
+                    duration: 1.2,
+                    delay: 0.025,
+                    ease: [0, 0.71, 0.2, 1.01],
+                  }}
                   key={room.date}
                   className="flex flex-col lg:w-full flex-wrap"
                 >
@@ -113,11 +120,11 @@ export const RoomCard = ({ room, times }: room) => {
                   ) : (
                     <p>Room not Available</p>
                   )}
-                </div>
+                </motion.div>
               ))}
-            </motion.div>
+            </div>
           )}
-        </div>
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   );
