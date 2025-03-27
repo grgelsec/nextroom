@@ -9,21 +9,27 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
   - Map popups containing available times.
   - Full availbility view page with all rooms and their availabilities.
 
-## 3/26
-
-- Figure out how to make the popups look how you want them to
-- Display the room number, availability, and the next available time in the room pop up
-- When I click on a room card then it activates a pop up.
-- Add a book now link to the top of the side bar
-
 ## 3/27
 
-- Create the view all page that has all of the rooms and availability with the info at the top and a book now link.
+- Create Nav bar of locations at the top of the page
 
 ## 3/28
 
-- Finish the landing hero bar
-- Make the side bar be a modal for moble viewers - might take a minute haha
+- Build out bento box Reservation page with nav bar at the top and link booking page
+
+## 3/29
+
+- Finish Hero section
+- Fallback components/figure out what to display while data is fetching
+- fix mobile view
+
+## 3/30
+
+- SEO
+
+## 3/31
+
+- Hosting in docker containers
 
 ## Current Bugs 🐛
 

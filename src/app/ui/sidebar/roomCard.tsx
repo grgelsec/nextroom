@@ -90,11 +90,11 @@ export const RoomCard = ({ room, times }: room) => {
             <div className="space-y-4">
               {times.slice(1, 6).map((room) => (
                 <motion.div
-                  initial={{ y: -30 }}
+                  initial={{ y: -20 }}
                   animate={{ y: 0 }}
                   transition={{
                     duration: 1.2,
-                    delay: 0.025,
+                    delay: 0.02,
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
                   key={room.date}
