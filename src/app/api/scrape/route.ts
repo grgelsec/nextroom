@@ -4,7 +4,7 @@ import { getData } from "@/app/services/puppeteerService";
 export async function GET() {
   try {
     const data = await getData();
-    return NextResponse.json({ success: true, data: data });
+    return NextResponse.json({ status: 200, success: true, data: data });
   } catch (error) {
     return NextResponse.json(
       {

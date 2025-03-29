@@ -6,19 +6,14 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 
 - Stick with the current design I have in figma.
 - Implement these features in order
-  - Map popups containing available times.
   - Full availbility view page with all rooms and their availabilities.
-
-## 3/27
-
-- Create Nav bar of locations at the top of the page
-
-## 3/28
-
-- Build out bento box Reservation page with nav bar at the top and link booking page
+  - Hosting in a container/aws
+  - Nav bar for future locations
 
 ## 3/29
 
+- Create Nav bar of locations at the top of the page
+- Build out bento box Reservation page with nav bar at the top and link booking page
 - Finish Hero section
 - Fallback components/figure out what to display while data is fetching
 - fix mobile view

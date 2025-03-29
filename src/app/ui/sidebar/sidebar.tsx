@@ -1,43 +1,21 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { room } from "@/app/types";
+
 import { RoomCard } from "./roomCard";
+import useLibraryRooms from "@/app/hooks/useLibraryRooms";
 //keys tell react when a component is 'truly new'.
 export default function Sidebar() {
   const [sidebarVisibility, setSideBarVisibility] = useState(false);
-  const [roomData, setRoomData] = useState<room[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const handleScrape = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/scrape`);
-        const data = await res.json();
-        console.log(data.data);
-        setRoomData(data.data);
-      } catch (error) {
-        console.error("Error fetching room data: ", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    handleScrape();
-  }, []);
-
-  useEffect(() => {
-    console.log(loading);
-  }, [loading]);
-
-  console.log(roomData);
+  const { roomData } = useLibraryRooms();
 
   const transition = {
     duration: 0.4,
     delay: 0.05,
     ease: [0, 0.71, 0.2, 1.01],
   };
+
+  console.log(roomData);
 
   return (
     <AnimatePresence mode="wait">
