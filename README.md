@@ -12,7 +12,6 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 
 ## 3/29
 
-- Create Nav bar of locations at the top of the page
 - Build out bento box Reservation page with nav bar at the top and link booking page
 - Finish Hero section
 - Fallback components/figure out what to display while data is fetching
@@ -20,7 +19,9 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 
 ## 3/30
 
-- SEO
+- Build out bento box Reservation page with nav bar at the top and link booking page
+- Fallback components/figure out what to display while data is fetching
+- fix mobile view
 
 ## 3/31
 

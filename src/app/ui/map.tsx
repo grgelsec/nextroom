@@ -1,13 +1,14 @@
 "use client";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+import Sidebar from "./sidebar/sidebar";
 
 export default function MapBackground() {
   const mapToken = process.env.NEXT_PUBLIC_MAPTOKEN;
 
-  const [selectedBuilding, setSelectedBuilding] = useState("");
-
+  //useRef does not cuase the component to rerender
+  const building = useRef("");
   useEffect(() => {
     mapboxgl.accessToken = mapToken;
 
@@ -31,9 +32,10 @@ export default function MapBackground() {
     const wellsMarker = document.createElement("button");
     wellsMarker.className = "bg-green-500 rounded-full w-3 h-3 shadow-lg glow";
     wellsMarker.id = "WellsLibrary";
-    wellsMarker.onclick = function () {
-      console.log(wellsMarker.id);
-      setSelectedBuilding(wellsMarker.id);
+
+    wellsMarker.onclick = function handleClick() {
+      building.current = wellsMarker.id;
+      console.log(building);
       return wellsMarker.id;
     };
 
@@ -47,9 +49,13 @@ export default function MapBackground() {
   });
 
   return (
-    <div
-      className="flex lg:w-3/4 md:w-3/4 w-full lg:h-full md:h-full h-1/2 rounded-lg items-start justify-center"
-      id="map"
-    ></div>
+    <>
+      <Sidebar building={building} />
+
+      <div
+        className="flex lg:w-3/4 md:w-3/4 w-full lg:h-full md:h-full h-1/2 rounded-lg items-start justify-center"
+        id="map"
+      ></div>
+    </>
   );
 }

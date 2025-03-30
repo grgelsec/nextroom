@@ -1,21 +1,25 @@
 "use client";
-import { useState } from "react";
+import { RefObject, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-
 import { RoomCard } from "./roomCard";
 import useLibraryRooms from "@/app/hooks/useLibraryRooms";
 //keys tell react when a component is 'truly new'.
-export default function Sidebar() {
+
+interface SideBarProps {
+  building: RefObject<string>;
+}
+
+const Sidebar = ({ building }: SideBarProps) => {
   const [sidebarVisibility, setSideBarVisibility] = useState(false);
   const { roomData } = useLibraryRooms();
+
+  console.log(building.current);
 
   const transition = {
     duration: 0.4,
     delay: 0.05,
     ease: [0, 0.71, 0.2, 1.01],
   };
-
-  console.log(roomData);
 
   return (
     <AnimatePresence mode="wait">
@@ -110,4 +114,6 @@ export default function Sidebar() {
       )}
     </AnimatePresence>
   );
-}
+};
+
+export default Sidebar;
