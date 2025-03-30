@@ -1,13 +1,14 @@
 "use client";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Sidebar from "./sidebar/sidebar";
 
-export default function MapBackground() {
+const MapBackground = () => {
   const mapToken = process.env.NEXT_PUBLIC_MAPTOKEN;
+  const [currentBuilding, setCurrentBuilding] = useState("");
 
-  //useRef does not cuase the component to rerender
+  //useRef does not cuase the component to rerender, sends the selected building
   const building = useRef("");
   useEffect(() => {
     mapboxgl.accessToken = mapToken;
@@ -24,7 +25,6 @@ export default function MapBackground() {
       dragPan: true,
       dragRotate: true,
     });
-
     map.on("style.load", () => {
       map.setConfigProperty("basemap", "lightPreset", "night");
     });
@@ -35,8 +35,8 @@ export default function MapBackground() {
 
     wellsMarker.onclick = function handleClick() {
       building.current = wellsMarker.id;
-      console.log(building);
-      return wellsMarker.id;
+      //setCurrentBuilding(wellsMarker.id);
+      console.log(building.current);
     };
 
     new mapboxgl.Marker(wellsMarker)
@@ -51,11 +51,12 @@ export default function MapBackground() {
   return (
     <>
       <Sidebar building={building} />
-
       <div
         className="flex lg:w-3/4 md:w-3/4 w-full lg:h-full md:h-full h-1/2 rounded-lg items-start justify-center"
         id="map"
       ></div>
     </>
   );
-}
+};
+
+export default MapBackground;

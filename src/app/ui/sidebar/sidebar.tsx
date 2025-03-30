@@ -1,5 +1,5 @@
 "use client";
-import { RefObject, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { RoomCard } from "./roomCard";
 import useLibraryRooms from "@/app/hooks/useLibraryRooms";
@@ -10,10 +10,40 @@ interface SideBarProps {
 }
 
 const Sidebar = ({ building }: SideBarProps) => {
-  const [sidebarVisibility, setSideBarVisibility] = useState(false);
+  //const [sidebarVisibility, setSideBarVisibility] = useState(false);
+  const [activeBuilding, setActiveBuilding] = useState("");
   const { roomData } = useLibraryRooms();
 
-  console.log(building.current);
+  /*
+  The issue with this approach is that both map background mount and the sidebar mount and building.current is "". Which is one of the keys to why it doesnt work
+
+  You could just pass a state variable into the child component props but that would trigger a re-render of the map everytime a user wanted to click on a marker which is bad UX. 
+
+  I tried to pass a ref that would I could feed into a state hook to cause a re-render every time the ref.current changed but that doesnt work becuase useEffect doesnt trigger useEffect dependencies. You can technically include ref in there but that isnt watching ref.current. 
+
+  useEffect(() => {
+    setActiveBuilding(building.current);
+    console.log(building.current);
+  }, [building, activeBuilding]);
+  */
+
+  /*
+  This approach uses polling. THis is like someone checking csomething at regular intervals to see if it has changed.
+
+  Since both the map and sidebar mount with empty values, the ref in the parent might get changed but that wont be reflected in the child until a re-render because useRef doesnt trigger a re-render. I did not to use a state variable because when the change was made in the parent, I didnt want the parent to re-render. So this polling pattern with the useEffect checks if the ref has changed every second and if it has then it sets the state and causes the side bar to re-render to show what you clicked on.
+
+  If someone is reading this code and is wondering why I wrote all this. It is because I was stuck on this problem for a couple hours and I eventually explained what was happening to Claude and it showed me an example and it was spot on. So this is my way of making sure I understand what it wrote. I also feel an immense amount of guilt when I have to resort it because I dont want to become dependent on it. Maybe it's my prde.
+  */
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (building.current !== activeBuilding) {
+        setActiveBuilding(building.current);
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [building, activeBuilding]);
 
   const transition = {
     duration: 0.4,
@@ -23,7 +53,7 @@ const Sidebar = ({ building }: SideBarProps) => {
 
   return (
     <AnimatePresence mode="wait">
-      {sidebarVisibility ? (
+      {activeBuilding != "" ? (
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -36,12 +66,12 @@ const Sidebar = ({ building }: SideBarProps) => {
             <p>Available: ✅</p>
             <p>Booked: 🚫</p>
           </header>
-          <div className="flex flex-col lg:w-full h-10/12 p-6 space-y-4 overflow-scroll items-center">
+          <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
             {roomData.map((room) => (
               <RoomCard key={room.room} room={room.room} times={room.times} />
             ))}
           </div>
-          <footer className="flex lg:w-full justify-center p-3 h-1/12">
+          {/* <footer className="flex lg:w-full justify-center p-3 h-1/12">
             <button
               className="flex justify-center items-center lg:w-1/4 rounded-lg hover:bg-white/10 hover:ring hover:ring-white duration-300 p-4 shadow-2xl"
               onClick={(e) => {
@@ -64,7 +94,7 @@ const Sidebar = ({ building }: SideBarProps) => {
                 />
               </svg>
             </button>
-          </footer>
+          </footer> */}
         </motion.div>
       ) : (
         <motion.div
@@ -86,7 +116,7 @@ const Sidebar = ({ building }: SideBarProps) => {
             </div>
             <div className="flex lg:w-full h-1/2  p-2"></div>
           </div>
-          <footer className="flex lg:w-full h-1/12 justify-center p-3">
+          {/* <footer className="flex lg:w-full h-1/12 justify-center p-3">
             <button
               className="flex justify-center items-center lg:w-1/4 rounded-lg hover:bg-white/10 hover:ring hover:ring-white duration-300 p-4 shadow-2xl"
               onClick={(e) => {
@@ -109,7 +139,7 @@ const Sidebar = ({ building }: SideBarProps) => {
                 />
               </svg>
             </button>
-          </footer>
+          </footer> */}
         </motion.div>
       )}
     </AnimatePresence>
