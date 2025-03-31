@@ -5,7 +5,8 @@ import { getSpeaData } from "@/app/services/SpeaLibrary";
 
 export async function GET() {
   try {
-    const data = getSpeaData();
+    //spent two hours on this because i forgot the await. STOP FORGETTING AWAITS
+    const data = await getSpeaData();
     return NextResponse.json({ status: 200, success: true, data: data });
   } catch (error) {
     return NextResponse.json({
