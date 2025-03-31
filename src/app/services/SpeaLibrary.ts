@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import { room } from "../types";
 
-export const getData = async () => {
+export const getSpeaData = async () => {
   //Browser Setup
   try {
     const browser = await puppeteer.launch({

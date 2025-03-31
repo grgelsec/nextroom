@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { getData } from "@/app/services/WellsLibraryRooms";
+import { getWellsData } from "@/app/services/WellsLibraryRooms";
 
 export async function GET() {
   try {
-    const data = await getData();
+    const data = await getWellsData();
     return NextResponse.json({ status: 200, success: true, data: data });
   } catch (error) {
     return NextResponse.json(
