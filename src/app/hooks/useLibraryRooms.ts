@@ -1,12 +1,12 @@
 import { room } from "../types";
 import { useEffect, useState } from "react";
 
-const useLibraryRooms = () => {
+export const useLibraryRooms = () => {
   const [roomData, setRoomData] = useState<room[]>([]);
 
   const getRoomData = async () => {
     try {
-      const res = await fetch(`/api/scrape`);
+      const res = await fetch(`/api/scrape/wells`);
       const roomDataResponse = await res.json();
       setRoomData(roomDataResponse.data);
     } catch (error) {
@@ -20,5 +20,3 @@ const useLibraryRooms = () => {
 
   return { roomData };
 };
-
-export default useLibraryRooms;

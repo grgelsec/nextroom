@@ -2,7 +2,8 @@
 import { RefObject, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { RoomCard } from "./roomCard";
-import useLibraryRooms from "@/app/hooks/useLibraryRooms";
+import { useLibraryRooms } from "@/app/hooks/useLibraryRooms";
+// import { useSpeaRooms } from "@/app/hooks/useSpeaRooms";
 //keys tell react when a component is 'truly new'.
 
 interface SideBarProps {
@@ -13,13 +14,15 @@ const Sidebar = ({ building }: SideBarProps) => {
   //const [sidebarVisibility, setSideBarVisibility] = useState(false);
   const [activeBuilding, setActiveBuilding] = useState("");
   const { roomData } = useLibraryRooms();
+  //const { speaRooms } = useSpeaRooms();
+  //console.log(speaRooms);
 
   /*
   The issue with this approach is that both map background mount and the sidebar mount and building.current is "". Which is one of the keys to why it doesnt work
 
   You could just pass a state variable into the child component props but that would trigger a re-render of the map everytime a user wanted to click on a marker which is bad UX. 
 
-  I tried to pass a ref that would I could feed into a state hook to cause a re-render every time the ref.current changed but that doesnt work becuase useEffect doesnt trigger useEffect dependencies. You can technically include ref in there but that isnt watching ref.current. 
+  I tried to pass a ref that would I could feed into a state hook to cause a re-render every time the ref.current changed but that doesnt work becuase useRef doesnt trigger useEffect dependencies. You can technically include ref in there but that isnt watching ref.current. 
 
   useEffect(() => {
     setActiveBuilding(building.current);
@@ -28,7 +31,7 @@ const Sidebar = ({ building }: SideBarProps) => {
   */
 
   /*
-  This approach uses polling. THis is like someone checking csomething at regular intervals to see if it has changed.
+  This approach uses polling. This is like someone checking csomething at regular intervals to see if it has changed.
 
   Since both the map and sidebar mount with empty values, the ref in the parent might get changed but that wont be reflected in the child until a re-render because useRef doesnt trigger a re-render. I did not to use a state variable because when the change was made in the parent, I didnt want the parent to re-render. So this polling pattern with the useEffect checks if the ref has changed every second and if it has then it sets the state and causes the side bar to re-render to show what you clicked on.
 

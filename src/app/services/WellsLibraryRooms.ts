@@ -1,20 +1,7 @@
 import puppeteer from "puppeteer";
-
-interface room {
-  room: string | undefined;
-  times: availability[];
-}
-
-type availability = {
-  date: string | undefined;
-  reserved: string | undefined;
-};
+import { room } from "../types";
 
 export const getData = async () => {
-  //current date
-  //const today = new Date();
-  //const day: number = today.getDate();
-
   //Browser Setup
   try {
     const browser = await puppeteer.launch({

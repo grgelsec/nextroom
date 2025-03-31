@@ -8,7 +8,8 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 - Implement these features in order
   - Full availbility view page with all rooms and their availabilities.
   - Hosting in a container/aws
-  - Nav bar for future locations
+  - When clicking on a building with w specific marker, the name is injected into the side bar which triggers a hook
+  -
 
 ## 3/29
 
@@ -30,3 +31,6 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 ## Current Bugs 🐛
 
 - Rooms that dont have a time are showing nothing - low prio
+
+- The website enters at wells
+- Hooks all fetch the data at the same time

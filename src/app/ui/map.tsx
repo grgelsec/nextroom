@@ -1,12 +1,11 @@
 "use client";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Sidebar from "./sidebar/sidebar";
 
 const MapBackground = () => {
   const mapToken = process.env.NEXT_PUBLIC_MAPTOKEN;
-  const [currentBuilding, setCurrentBuilding] = useState("");
 
   //useRef does not cuase the component to rerender, sends the selected building
   const building = useRef("");
@@ -35,7 +34,6 @@ const MapBackground = () => {
 
     wellsMarker.onclick = function handleClick() {
       building.current = wellsMarker.id;
-      //setCurrentBuilding(wellsMarker.id);
       console.log(building.current);
     };
 
