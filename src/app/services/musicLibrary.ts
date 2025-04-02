@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import { room } from "../types";
 
-export const getNealData = async () => {
+export const getMusicData = async () => {
   //Browser Setup
   try {
     const browser = await puppeteer.launch({
@@ -13,7 +13,7 @@ export const getNealData = async () => {
     const page = await browser.newPage();
 
     //Navigation with while loading for dynamic data
-    await page.goto("https://iub.libcal.com/reserve/spaces/nealmarshall", {
+    await page.goto("https://iub.libcal.com/spaces?lid=14001", {
       waitUntil: "networkidle0",
     });
 
