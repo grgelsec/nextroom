@@ -23,6 +23,5 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 
 ## 4/2
 
-- Finish all of the hooks for the different libraries
 - Put in all of the room cards for the different libraries
 - Make skeleton fall back components for loading data

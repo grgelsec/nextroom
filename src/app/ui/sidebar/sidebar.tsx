@@ -3,11 +3,11 @@ import { RefObject, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { RoomCard } from "./roomCard";
 import { useLibraryRooms } from "@/app/hooks/useLibraryRooms";
-import { useSpeaRooms } from "@/app/hooks/useSpeaRooms";
-import { useEducationRooms } from "@/app/hooks/useEducationRooms";
-import { useNealRooms } from "@/app/hooks/useNealRooms";
-import { useMusicRooms } from "@/app/hooks/useMusicRooms";
-import { useSciencesRooms } from "@/app/hooks/useSciencesRooms";
+// import { useSpeaRooms } from "@/app/hooks/useSpeaRooms";
+// import { useEducationRooms } from "@/app/hooks/useEducationRooms";
+// import { useNealRooms } from "@/app/hooks/useNealRooms";
+// import { useMusicRooms } from "@/app/hooks/useMusicRooms";
+// import { useSciencesRooms } from "@/app/hooks/useSciencesRooms";
 //keys tell react when a component is 'truly new'.
 
 interface SideBarProps {
@@ -18,18 +18,18 @@ const Sidebar = ({ building }: SideBarProps) => {
   //const [sidebarVisibility, setSideBarVisibility] = useState(false);
   const [activeBuilding, setActiveBuilding] = useState("");
   const { roomData } = useLibraryRooms();
-  const { speaRooms } = useSpeaRooms();
-  const { educationRooms } = useEducationRooms();
-  const { nealRooms } = useNealRooms();
-  const { musicRooms } = useMusicRooms();
-  const { sciencesRooms } = useSciencesRooms();
+  // const { speaRooms } = useSpeaRooms();
+  // const { educationRooms } = useEducationRooms();
+  // const { nealRooms } = useNealRooms();
+  // const { musicRooms } = useMusicRooms();
+  // const { sciencesRooms } = useSciencesRooms();
 
   console.log(roomData);
-  console.log(speaRooms);
-  console.log(educationRooms);
-  console.log(nealRooms);
-  console.log(musicRooms);
-  console.log(sciencesRooms);
+  // console.log(speaRooms);
+  // console.log(educationRooms);
+  // console.log(nealRooms);
+  // console.log(musicRooms);
+  // console.log(sciencesRooms);
   /*
   The issue with this approach is that both map background mount and the sidebar mount and building.current is "". Which is one of the keys to why it doesnt work
 

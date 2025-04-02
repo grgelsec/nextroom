@@ -49,6 +49,7 @@ export const getWellsData = async () => {
 
     const roomAvailabilityData: room[] = [];
 
+    //adds all of the rooms to the final array
     for (let i = 0; i < scrapedData.length - 1; i++) {
       if (scrapedData[i].room != scrapedData[i + 1].room) {
         roomAvailabilityData.push(scrapedData[i]);
@@ -56,10 +57,11 @@ export const getWellsData = async () => {
     }
 
     //not very fast, need to see if we can write something faster
-    for (let i = 0; i < roomAvailabilityData.length - 1; i++) {
+    //loops through all of the rooms and adds the first 10 time slots
+    for (let i = 0; i <= roomAvailabilityData.length - 1; i++) {
       for (let j = 0; j < scrapedData.length - 1; j++) {
         if (
-          roomAvailabilityData[i].times.length < 20 &&
+          roomAvailabilityData[i].times.length < 10 &&
           scrapedData[j].room == roomAvailabilityData[i].room &&
           scrapedData[j].room == scrapedData[j + 1].room
         ) {
