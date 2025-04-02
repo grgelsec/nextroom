@@ -54,7 +54,7 @@ export const getSpeaData = async () => {
         roomAvailabilityData.push(scrapedData[i]);
       }
     }
-
+    roomAvailabilityData.push(scrapedData[scrapedData.length - 1]);
     //not very fast, need to see if we can write something faster
     for (let i = 0; i <= roomAvailabilityData.length - 1; i++) {
       for (let j = 0; j < scrapedData.length - 1; j++) {

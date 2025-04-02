@@ -55,7 +55,7 @@ export const getWellsData = async () => {
         roomAvailabilityData.push(scrapedData[i]);
       }
     }
-
+    roomAvailabilityData.push(scrapedData[scrapedData.length - 1]);
     //not very fast, need to see if we can write something faster
     //loops through all of the rooms and adds the first 10 time slots
     for (let i = 0; i <= roomAvailabilityData.length - 1; i++) {
