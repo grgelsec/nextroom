@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { RoomCard } from "./roomCard";
 import { useLibraryRooms } from "@/app/hooks/useLibraryRooms";
 import { useSpeaRooms } from "@/app/hooks/useSpeaRooms";
+import { useEducationRooms } from "@/app/hooks/useEducationRooms";
+import { useNealRooms } from "@/app/hooks/useNealRooms";
 //keys tell react when a component is 'truly new'.
 
 interface SideBarProps {
@@ -15,8 +17,13 @@ const Sidebar = ({ building }: SideBarProps) => {
   const [activeBuilding, setActiveBuilding] = useState("");
   const { roomData } = useLibraryRooms();
   const { speaRooms } = useSpeaRooms();
+  const { educationRooms } = useEducationRooms();
+  const { nealRooms } = useNealRooms();
+
   console.log(roomData);
   console.log(speaRooms);
+  console.log(educationRooms);
+  console.log(nealRooms);
 
   /*
   The issue with this approach is that both map background mount and the sidebar mount and building.current is "". Which is one of the keys to why it doesnt work

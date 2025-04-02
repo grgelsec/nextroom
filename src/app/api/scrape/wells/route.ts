@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
 import { getWellsData } from "@/app/services/WellsLibraryRooms";
 
-export async function GET() {
+export async function GET(res: NextResponse) {
   try {
     const data = await getWellsData();
-    return NextResponse.json({ status: 200, success: true, data: data });
+    return NextResponse.json({ status: res.status, success: true, data: data });
   } catch (error) {
     return NextResponse.json(
       {
         success: false,
         error: error instanceof Error ? error.message : "Unknown Error",
       },
-      { status: 500 }
+      { status: res.status }
     );
   }
 }

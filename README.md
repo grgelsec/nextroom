@@ -11,26 +11,18 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
   - When clicking on a building with w specific marker, the name is injected into the side bar which triggers a hook
   -
 
-## 3/29
+## TODO
 
-- Build out bento box Reservation page with nav bar at the top and link booking page
-- Finish Hero section
-- Fallback components/figure out what to display while data is fetching
-- fix mobile view
+- Finish all of the hooks for the different libraries
+- Put in all of the room cards for the different libraries
+- Make skeleton fall back components for loading data
+- Fix mobile view
+- make markers display red or green depending on if there are rooms available or not
+- Finish landing for the sidebar
+- Host
 
-## 3/30
+## 4/2
 
-- Build out bento box Reservation page with nav bar at the top and link booking page
-- Fallback components/figure out what to display while data is fetching
-- fix mobile view
-
-## 3/31
-
-- Hosting in docker containers
-
-## Current Bugs 🐛
-
-- Rooms that dont have a time are showing nothing - low prio
-
-- The website enters at wells
-- Hooks all fetch the data at the same time
+- Finish all of the hooks for the different libraries
+- Put in all of the room cards for the different libraries
+- Make skeleton fall back components for loading data

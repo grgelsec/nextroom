@@ -7,8 +7,8 @@ export const useLibraryRooms = () => {
   const getRoomData = async () => {
     try {
       const res = await fetch(`/api/scrape/wells`);
-      const roomDataResponse = await res.json();
-      setRoomData(roomDataResponse.data);
+      const libraryDataRes = await res.json();
+      setRoomData(libraryDataRes.data);
     } catch (error) {
       console.error("Failed to fetch room reservation data: ", error);
     }

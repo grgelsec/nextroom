@@ -7,8 +7,8 @@ export const useSpeaRooms = () => {
   const getSpeaData = async () => {
     try {
       const res = await fetch(`/api/scrape/spea`);
-      const speaData = await res.json();
-      setSpeaRooms(speaData.data);
+      const speaDataRes = await res.json();
+      setSpeaRooms(speaDataRes.data);
     } catch (error) {
       console.error("Error occoured fetching data from spea library: ", error);
     }
