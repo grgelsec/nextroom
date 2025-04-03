@@ -27,6 +27,22 @@ const MapBackground = () => {
       map.setConfigProperty("basemap", "lightPreset", "night");
     });
 
+    //nealmarshall library
+    const nealMarker = document.createElement("button");
+    nealMarker.className = "bg-green-500 rounded-full w-3 h-3 shadow-lg glow";
+    nealMarker.id = "NealLibrary";
+
+    nealMarker.onclick = function handleClick() {
+      building.current = nealMarker.id;
+      console.log(building.current);
+    };
+
+    new mapboxgl.Marker(nealMarker)
+      .setLngLat([-86.5166993, 39.1683026])
+      .addClassName("nealLibrary")
+      .addTo(map)
+      .getElement();
+
     //sciences library
     const sciencesMarker = document.createElement("button");
     sciencesMarker.className =

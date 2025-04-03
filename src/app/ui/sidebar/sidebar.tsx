@@ -8,7 +8,6 @@ import { useEducationRooms } from "@/app/hooks/useEducationRooms";
 import { useNealRooms } from "@/app/hooks/useNealRooms";
 import { useMusicRooms } from "@/app/hooks/useMusicRooms";
 import { useSciencesRooms } from "@/app/hooks/useSciencesRooms";
-import { anticipate } from "motion";
 //keys tell react when a component is 'truly new'.
 
 interface SideBarProps {
@@ -103,6 +102,15 @@ const Sidebar = ({ building }: SideBarProps) => {
           {activeBuilding == "SciencesLibrary" ? (
             <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
               {sciencesRooms.map((room) => (
+                <RoomCard key={room.room} room={room.room} times={room.times} />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
+          {activeBuilding == "NealLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              {nealRooms.map((room) => (
                 <RoomCard key={room.room} room={room.room} times={room.times} />
               ))}
             </div>
