@@ -1,6 +1,7 @@
 import { room } from "@/app/types";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { easeInOut } from "motion";
 
 export const RoomCard = ({ room, times }: room) => {
   const [cardExtend, setCardExtend] = useState(true);
@@ -8,12 +9,12 @@ export const RoomCard = ({ room, times }: room) => {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 100, opacity: 0 }}
         transition={{
-          duration: 0.8,
-          delay: 0.01,
-          ease: [0, 0.71, 0.3, 1.01],
+          duration: 0.6,
+          ease: easeInOut,
         }}
         className="flex flex-col flex-wrap lg:w-full p-6 bg-[#191919] shadow-2xl rounded-md space-y-4 font-extralight"
       >
@@ -23,9 +24,9 @@ export const RoomCard = ({ room, times }: room) => {
           initial={{ y: 30 }}
           animate={{ y: 0 }}
           transition={{
-            duration: 2,
-            delay: 0.05,
-            ease: [0, 0.71, 0.2, 1.01],
+            duration: 1,
+            delay: 0.04,
+            ease: easeInOut,
           }}
         >
           <h1 className=" flex justify-items-start lg:w-full">
@@ -93,9 +94,9 @@ export const RoomCard = ({ room, times }: room) => {
                   initial={{ y: -20 }}
                   animate={{ y: 0 }}
                   transition={{
-                    duration: 1.2,
-                    delay: 0.02,
-                    ease: [0, 0.71, 0.2, 1.01],
+                    duration: 0.2,
+
+                    ease: easeInOut,
                   }}
                   key={room.date}
                   className="flex flex-col lg:w-full flex-wrap"

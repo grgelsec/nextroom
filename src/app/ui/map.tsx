@@ -16,18 +16,51 @@ const MapBackground = () => {
       container: "map",
       style: "mapbox://styles/mapbox/standard",
       center: [-86.5167, 39.171],
-      zoom: 18,
-      maxZoom: 18,
-      minZoom: 9,
+      zoom: 17,
       pitch: 60,
       bearing: 225,
       dragPan: true,
       dragRotate: true,
     });
+
     map.on("style.load", () => {
       map.setConfigProperty("basemap", "lightPreset", "night");
     });
 
+    //sciences library
+    const sciencesMarker = document.createElement("button");
+    sciencesMarker.className =
+      "bg-green-500 rounded-full w-3 h-3 shadow-lg glow";
+    sciencesMarker.id = "SciencesLibrary";
+
+    sciencesMarker.onclick = function handleClick() {
+      building.current = sciencesMarker.id;
+      console.log(building.current);
+    };
+
+    new mapboxgl.Marker(sciencesMarker)
+      .setLngLat([-86.5228239, 39.16596191])
+      .addClassName("SciencesLibrary")
+      .addTo(map)
+      .getElement();
+
+    //spea library
+    const speaMarker = document.createElement("button");
+    speaMarker.className = "bg-green-500 rounded-full w-3 h-3 shadow-lg glow";
+    speaMarker.id = "SpeaLibrary";
+
+    speaMarker.onclick = function handleClick() {
+      building.current = speaMarker.id;
+      console.log(building.current);
+    };
+
+    new mapboxgl.Marker(speaMarker)
+      .setLngLat([-86.5177, 39.1725])
+      .addClassName("SpeaLibrary")
+      .addTo(map)
+      .getElement();
+
+    //wells library
     const wellsMarker = document.createElement("button");
     wellsMarker.className = "bg-green-500 rounded-full w-3 h-3 shadow-lg glow";
     wellsMarker.id = "WellsLibrary";

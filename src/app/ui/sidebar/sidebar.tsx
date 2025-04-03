@@ -1,13 +1,14 @@
 "use client";
 import { RefObject, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, easeInOut, motion } from "motion/react";
 import { RoomCard } from "./roomCard";
 import { useLibraryRooms } from "@/app/hooks/useLibraryRooms";
-// import { useSpeaRooms } from "@/app/hooks/useSpeaRooms";
-// import { useEducationRooms } from "@/app/hooks/useEducationRooms";
-// import { useNealRooms } from "@/app/hooks/useNealRooms";
-// import { useMusicRooms } from "@/app/hooks/useMusicRooms";
-// import { useSciencesRooms } from "@/app/hooks/useSciencesRooms";
+import { useSpeaRooms } from "@/app/hooks/useSpeaRooms";
+import { useEducationRooms } from "@/app/hooks/useEducationRooms";
+import { useNealRooms } from "@/app/hooks/useNealRooms";
+import { useMusicRooms } from "@/app/hooks/useMusicRooms";
+import { useSciencesRooms } from "@/app/hooks/useSciencesRooms";
+import { anticipate } from "motion";
 //keys tell react when a component is 'truly new'.
 
 interface SideBarProps {
@@ -18,18 +19,18 @@ const Sidebar = ({ building }: SideBarProps) => {
   //const [sidebarVisibility, setSideBarVisibility] = useState(false);
   const [activeBuilding, setActiveBuilding] = useState("");
   const { roomData } = useLibraryRooms();
-  // const { speaRooms } = useSpeaRooms();
-  // const { educationRooms } = useEducationRooms();
-  // const { nealRooms } = useNealRooms();
-  // const { musicRooms } = useMusicRooms();
-  // const { sciencesRooms } = useSciencesRooms();
+  const { speaRooms } = useSpeaRooms();
+  const { educationRooms } = useEducationRooms();
+  const { nealRooms } = useNealRooms();
+  const { musicRooms } = useMusicRooms();
+  const { sciencesRooms } = useSciencesRooms();
 
   console.log(roomData);
-  // console.log(speaRooms);
-  // console.log(educationRooms);
-  // console.log(nealRooms);
-  // console.log(musicRooms);
-  // console.log(sciencesRooms);
+  console.log(speaRooms);
+  console.log(educationRooms);
+  console.log(nealRooms);
+  console.log(musicRooms);
+  console.log(sciencesRooms);
   /*
   The issue with this approach is that both map background mount and the sidebar mount and building.current is "". Which is one of the keys to why it doesnt work
 
@@ -62,18 +63,17 @@ const Sidebar = ({ building }: SideBarProps) => {
   }, [building, activeBuilding]);
 
   const transition = {
-    duration: 0.4,
-    delay: 0.05,
-    ease: [0, 0.71, 0.2, 1.01],
+    duration: 0.6,
+    ease: easeInOut,
   };
 
   return (
     <AnimatePresence mode="wait">
       {activeBuilding != "" ? (
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
+          exit={{ opacity: 0, y: 100 }}
           transition={transition}
           key={"inactive"}
           className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2  items-end rounded-lg"
@@ -82,11 +82,33 @@ const Sidebar = ({ building }: SideBarProps) => {
             <p>Available: ✅</p>
             <p>Booked: 🚫</p>
           </header>
-          <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
-            {roomData.map((room) => (
-              <RoomCard key={room.room} room={room.room} times={room.times} />
-            ))}
-          </div>
+          {activeBuilding == "WellsLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              {roomData.map((room) => (
+                <RoomCard key={room.room} room={room.room} times={room.times} />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
+          {activeBuilding == "SpeaLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              {speaRooms.map((room) => (
+                <RoomCard key={room.room} room={room.room} times={room.times} />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
+          {activeBuilding == "SciencesLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              {sciencesRooms.map((room) => (
+                <RoomCard key={room.room} room={room.room} times={room.times} />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
           {/* <footer className="flex lg:w-full justify-center p-3 h-1/12">
             <button
               className="flex justify-center items-center lg:w-1/4 rounded-lg hover:bg-white/10 hover:ring hover:ring-white duration-300 p-4 shadow-2xl"
