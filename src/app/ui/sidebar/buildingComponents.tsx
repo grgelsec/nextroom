@@ -12,19 +12,19 @@ import { Suspense } from "react";
 export const Wells = () => {
   const { roomData } = useLibraryRooms();
   return (
-    <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center ">
-      <BuildingTitle name={"Wells Library"} />
-      <Book link={"https://iub.libcal.com/reserve/spaces/wells"} />
-      <Suspense
-        fallback={
-          <div className="text-white font-extralight text-2xl">Loading...</div>
-        }
-      >
+    <Suspense
+      fallback={
+        <div className="text-white font-extralight text-2xl">Loading...</div>
+      }
+    >
+      <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center ">
+        <BuildingTitle name={"Wells Library"} />
+        <Book link={"https://iub.libcal.com/reserve/spaces/wells"} />
         {roomData.map((room) => (
           <RoomCard key={room.room} room={room.room} times={room.times} />
         ))}
-      </Suspense>
-    </div>
+      </div>
+    </Suspense>
   );
 };
 
