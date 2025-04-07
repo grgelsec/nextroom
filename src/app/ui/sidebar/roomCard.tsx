@@ -1,3 +1,4 @@
+"use client";
 import { room } from "@/app/types";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -21,8 +22,8 @@ export const RoomCard = ({ room, times }: room) => {
         <div>
           <h1 className="flex justify-items-start lg:w-full ">
             <div className="space-x-2 flex lg:w-full text-md ">
-              <p>{room}</p>
-              <p>
+              <div>{room}</div>
+              <div>
                 {times
                   .slice(1, 2)
                   .map((room) =>
@@ -32,7 +33,7 @@ export const RoomCard = ({ room, times }: room) => {
                       <a key={"false"}>🚫</a>
                     )
                   )}
-              </p>
+              </div>
             </div>
             <motion.button
               whileTap={{ rotate: 3 }}
@@ -89,7 +90,7 @@ export const RoomCard = ({ room, times }: room) => {
                     ease: easeInOut,
                   }}
                   key={room.date}
-                  className="flex flex-col lg:w-full flex-wrap"
+                  className="flex flex-col lg:w-full flex-wrap mt-4"
                 >
                   {room.date != null ? (
                     <div

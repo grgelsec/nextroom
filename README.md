@@ -13,15 +13,8 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 
 ## TODO
 
-- Finish all of the hooks for the different libraries
-- Put in all of the room cards for the different libraries
 - Make skeleton fall back components for loading data
 - Fix mobile view
 - make markers display red or green depending on if there are rooms available or not
 - Finish landing for the sidebar
 - Host
-
-## 4/2
-
-- Put in all of the room cards for the different libraries
-- Make skeleton fall back components for loading data

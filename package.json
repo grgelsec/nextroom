@@ -9,13 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroui/skeleton": "^2.2.10",
+    "@heroui/system": "^2.4.13",
+    "@heroui/theme": "^2.4.13",
     "@types/mapbox-gl": "^3.4.1",
+    "framer-motion": "^12.6.3",
     "mapbox-gl": "^3.10.0",
     "motion": "^12.4.10",
     "next": "15.2.0",
     "puppeteer": "^24.4.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,14 +1,15 @@
 "use client";
 import { RefObject, useEffect, useState } from "react";
 import { AnimatePresence, easeInOut, motion } from "motion/react";
-import { RoomCard } from "./roomCard";
-import { useLibraryRooms } from "@/app/hooks/useLibraryRooms";
-import { useSpeaRooms } from "@/app/hooks/useSpeaRooms";
-import { useEducationRooms } from "@/app/hooks/useEducationRooms";
-import { useNealRooms } from "@/app/hooks/useNealRooms";
-import { useMusicRooms } from "@/app/hooks/useMusicRooms";
-import { useSciencesRooms } from "@/app/hooks/useSciencesRooms";
-import { Book } from "./bookButton";
+
+import {
+  Wells,
+  SPEA,
+  Education,
+  Music,
+  NealMarshall,
+  Sciences,
+} from "./buildingComponents";
 //keys tell react when a component is 'truly new'.
 
 interface SideBarProps {
@@ -16,21 +17,8 @@ interface SideBarProps {
 }
 
 const Sidebar = ({ building }: SideBarProps) => {
-  //const [sidebarVisibility, setSideBarVisibility] = useState(false);
   const [activeBuilding, setActiveBuilding] = useState("");
-  const { roomData } = useLibraryRooms();
-  const { speaRooms } = useSpeaRooms();
-  const { educationRooms } = useEducationRooms();
-  const { nealRooms } = useNealRooms();
-  const { musicRooms } = useMusicRooms();
-  const { sciencesRooms } = useSciencesRooms();
 
-  console.log(roomData);
-  console.log(speaRooms);
-  console.log(educationRooms);
-  console.log(nealRooms);
-  console.log(musicRooms);
-  console.log(sciencesRooms);
   /*
   The issue with this approach is that both map background mount and the sidebar mount and building.current is "". Which is one of the keys to why it doesnt work
 
@@ -82,108 +70,12 @@ const Sidebar = ({ building }: SideBarProps) => {
             <p>Available: ✅</p>
             <p>Booked: 🚫</p>
           </header>
-          {activeBuilding == "WellsLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center ">
-              <h1 className="text-xl font-extralight pb-4">Wells Library</h1>
-              <Book link={"https://iub.libcal.com/reserve/spaces/wells"} />
-              {roomData.map((room) => (
-                <RoomCard key={room.room} room={room.room} times={room.times} />
-              ))}
-            </div>
-          ) : (
-            <></>
-          )}
-          {activeBuilding == "SpeaLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
-              <h1 className="text-xl font-extralight pb-4">
-                Buisness/SPEA Library
-              </h1>
-              <Book link={"https://iub.libcal.com/reserve/spaces/bsic"} />
-              {speaRooms.map((room) => (
-                <RoomCard key={room.room} room={room.room} times={room.times} />
-              ))}
-            </div>
-          ) : (
-            <></>
-          )}
-          {activeBuilding == "SciencesLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
-              <h1 className="text-xl font-extralight pb-4">
-                IUB Sciences Library
-              </h1>
-              <Book link={"https://iub.libcal.com/reserve/spaces/sciences"} />
-              {sciencesRooms.map((room) => (
-                <RoomCard key={room.room} room={room.room} times={room.times} />
-              ))}
-            </div>
-          ) : (
-            <></>
-          )}
-          {activeBuilding == "NealLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
-              <h1 className="text-xl font-extralight pb-4">
-                Neal Marshall Library
-              </h1>
-              <Book
-                link={"https://iub.libcal.com/reserve/spaces/nealmarshall"}
-              />
-              {nealRooms.map((room) => (
-                <RoomCard key={room.room} room={room.room} times={room.times} />
-              ))}
-            </div>
-          ) : (
-            <></>
-          )}
-          {activeBuilding == "MusicLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
-              <h1 className="text-xl font-extralight pb-4">
-                Cook Music Library
-              </h1>
-              <Book link={"https://iub.libcal.com/spaces?lid=14001"} />
-              {musicRooms.map((room) => (
-                <RoomCard key={room.room} room={room.room} times={room.times} />
-              ))}
-            </div>
-          ) : (
-            <></>
-          )}
-          {activeBuilding == "EducationLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
-              <h1 className="text-xl font-extralight pb-4">
-                Education Library
-              </h1>
-              <Book link={"https://iub.libcal.com/reserve/spaces/education"} />
-              {educationRooms.map((room) => (
-                <RoomCard key={room.room} room={room.room} times={room.times} />
-              ))}
-            </div>
-          ) : (
-            <></>
-          )}
-          {/* <footer className="flex lg:w-full justify-center p-3 h-1/12">
-            <button
-              className="flex justify-center items-center lg:w-1/4 rounded-lg hover:bg-white/10 hover:ring hover:ring-white duration-300 p-4 shadow-2xl"
-              onClick={(e) => {
-                e.preventDefault();
-                setSideBarVisibility(false);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-8"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-                />
-              </svg>
-            </button>
-          </footer> */}
+          {activeBuilding == "WellsLibrary" ? <Wells /> : <></>}
+          {activeBuilding == "SpeaLibrary" ? <SPEA /> : <></>}
+          {activeBuilding == "SciencesLibrary" ? <Sciences /> : <></>}
+          {activeBuilding == "NealLibrary" ? <NealMarshall /> : <></>}
+          {activeBuilding == "MusicLibrary" ? <Music /> : <></>}
+          {activeBuilding == "EducationLibrary" ? <Education /> : <></>}
         </motion.div>
       ) : (
         <motion.div
@@ -205,30 +97,6 @@ const Sidebar = ({ building }: SideBarProps) => {
             </div>
             <div className="flex lg:w-full h-1/2  p-2"></div>
           </div>
-          {/* <footer className="flex lg:w-full h-1/12 justify-center p-3">
-            <button
-              className="flex justify-center items-center lg:w-1/4 rounded-lg hover:bg-white/10 hover:ring hover:ring-white duration-300 p-4 shadow-2xl"
-              onClick={(e) => {
-                e.preventDefault();
-                setSideBarVisibility(true);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-8"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-                />
-              </svg>
-            </button>
-          </footer> */}
         </motion.div>
       )}
     </AnimatePresence>
