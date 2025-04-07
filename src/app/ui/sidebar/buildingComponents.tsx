@@ -1,3 +1,4 @@
+"use client";
 import { useLibraryRooms } from "@/app/hooks/useLibraryRooms";
 import { useSpeaRooms } from "@/app/hooks/useSpeaRooms";
 import { useEducationRooms } from "@/app/hooks/useEducationRooms";

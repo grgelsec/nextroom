@@ -1,7 +1,6 @@
 "use client";
 import { RefObject, useEffect, useState } from "react";
 import { AnimatePresence, easeInOut, motion } from "motion/react";
-
 import {
   Wells,
   SPEA,
