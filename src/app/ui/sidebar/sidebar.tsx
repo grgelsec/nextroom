@@ -9,6 +9,9 @@ import {
   NealMarshall,
   Sciences,
 } from "./buildingComponents";
+import { Suspense } from "react";
+import { Book } from "./bookButton";
+import { BuildingTitle } from "./buildingTitle";
 //keys tell react when a component is 'truly new'.
 
 interface SideBarProps {
@@ -50,7 +53,7 @@ const Sidebar = ({ building }: SideBarProps) => {
   }, [building, activeBuilding]);
 
   const transition = {
-    duration: 1,
+    duration: 0.6,
     ease: easeInOut,
   };
 
@@ -69,7 +72,15 @@ const Sidebar = ({ building }: SideBarProps) => {
             <p>Available: ✅</p>
             <p>Booked: 🚫</p>
           </header>
-          {activeBuilding == "WellsLibrary" ? <Wells /> : <></>}
+          {activeBuilding == "WellsLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center ">
+              <BuildingTitle name={"Wells Library"} />
+              <Book link={"https://iub.libcal.com/reserve/spaces/wells"} />
+              <Wells />
+            </div>
+          ) : (
+            <></>
+          )}
           {activeBuilding == "SpeaLibrary" ? <SPEA /> : <></>}
           {activeBuilding == "SciencesLibrary" ? <Sciences /> : <></>}
           {activeBuilding == "NealLibrary" ? <NealMarshall /> : <></>}
