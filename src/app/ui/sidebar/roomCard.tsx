@@ -9,28 +9,18 @@ export const RoomCard = ({ room, times }: room) => {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
         transition={{
           duration: 0.6,
           ease: easeInOut,
         }}
-        className="flex flex-col flex-wrap lg:w-full p-6 bg-[#191919] shadow-2xl rounded-md space-y-4 font-extralight"
+        className="flex flex-col lg:w-full p-4 bg-[#191919] shadow-2xl rounded-md space-y-4 font-extralight"
       >
-        <motion.div
-          key={"openCard"}
-          className="space-y-4"
-          initial={{ y: 30 }}
-          animate={{ y: 0 }}
-          transition={{
-            duration: 1,
-            delay: 0.04,
-            ease: easeInOut,
-          }}
-        >
-          <h1 className=" flex justify-items-start lg:w-full">
-            <div className="space-x-2 flex w-1/2">
+        <div>
+          <h1 className="flex justify-items-start lg:w-full ">
+            <div className="space-x-2 flex lg:w-full text-md ">
               <p>{room}</p>
               <p>
                 {times
@@ -125,7 +115,7 @@ export const RoomCard = ({ room, times }: room) => {
               ))}
             </div>
           )}
-        </motion.div>
+        </div>
       </motion.div>
     </AnimatePresence>
   );

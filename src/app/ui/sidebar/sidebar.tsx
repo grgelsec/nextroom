@@ -8,6 +8,7 @@ import { useEducationRooms } from "@/app/hooks/useEducationRooms";
 import { useNealRooms } from "@/app/hooks/useNealRooms";
 import { useMusicRooms } from "@/app/hooks/useMusicRooms";
 import { useSciencesRooms } from "@/app/hooks/useSciencesRooms";
+import { Book } from "./bookButton";
 //keys tell react when a component is 'truly new'.
 
 interface SideBarProps {
@@ -62,7 +63,7 @@ const Sidebar = ({ building }: SideBarProps) => {
   }, [building, activeBuilding]);
 
   const transition = {
-    duration: 0.6,
+    duration: 1,
     ease: easeInOut,
   };
 
@@ -75,14 +76,16 @@ const Sidebar = ({ building }: SideBarProps) => {
           exit={{ opacity: 0, y: 100 }}
           transition={transition}
           key={"inactive"}
-          className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2  items-end rounded-lg"
+          className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2  items-end rounded-lg overflow-scroll"
         >
-          <header className="flex lg:w-full justify-center p-4 h-1/12 space-x-4 text-white font-extralight items-end ">
+          <header className="flex lg:w-full justify-center p-4 h-1/12 space-x-4 text-white font-extralight items-end">
             <p>Available: ✅</p>
             <p>Booked: 🚫</p>
           </header>
           {activeBuilding == "WellsLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center ">
+              <h1 className="text-xl font-extralight pb-4">Wells Library</h1>
+              <Book link={"https://iub.libcal.com/reserve/spaces/wells"} />
               {roomData.map((room) => (
                 <RoomCard key={room.room} room={room.room} times={room.times} />
               ))}
@@ -92,6 +95,10 @@ const Sidebar = ({ building }: SideBarProps) => {
           )}
           {activeBuilding == "SpeaLibrary" ? (
             <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <h1 className="text-xl font-extralight pb-4">
+                Buisness/SPEA Library
+              </h1>
+              <Book link={"https://iub.libcal.com/reserve/spaces/bsic"} />
               {speaRooms.map((room) => (
                 <RoomCard key={room.room} room={room.room} times={room.times} />
               ))}
@@ -101,6 +108,10 @@ const Sidebar = ({ building }: SideBarProps) => {
           )}
           {activeBuilding == "SciencesLibrary" ? (
             <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <h1 className="text-xl font-extralight pb-4">
+                IUB Sciences Library
+              </h1>
+              <Book link={"https://iub.libcal.com/reserve/spaces/sciences"} />
               {sciencesRooms.map((room) => (
                 <RoomCard key={room.room} room={room.room} times={room.times} />
               ))}
@@ -110,6 +121,12 @@ const Sidebar = ({ building }: SideBarProps) => {
           )}
           {activeBuilding == "NealLibrary" ? (
             <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <h1 className="text-xl font-extralight pb-4">
+                Neal Marshall Library
+              </h1>
+              <Book
+                link={"https://iub.libcal.com/reserve/spaces/nealmarshall"}
+              />
               {nealRooms.map((room) => (
                 <RoomCard key={room.room} room={room.room} times={room.times} />
               ))}
@@ -119,6 +136,10 @@ const Sidebar = ({ building }: SideBarProps) => {
           )}
           {activeBuilding == "MusicLibrary" ? (
             <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <h1 className="text-xl font-extralight pb-4">
+                Cook Music Library
+              </h1>
+              <Book link={"https://iub.libcal.com/spaces?lid=14001"} />
               {musicRooms.map((room) => (
                 <RoomCard key={room.room} room={room.room} times={room.times} />
               ))}
@@ -128,6 +149,10 @@ const Sidebar = ({ building }: SideBarProps) => {
           )}
           {activeBuilding == "EducationLibrary" ? (
             <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <h1 className="text-xl font-extralight pb-4">
+                Education Library
+              </h1>
+              <Book link={"https://iub.libcal.com/reserve/spaces/education"} />
               {educationRooms.map((room) => (
                 <RoomCard key={room.room} room={room.room} times={room.times} />
               ))}
