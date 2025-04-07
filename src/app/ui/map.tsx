@@ -24,8 +24,42 @@ const MapBackground = () => {
     });
 
     map.on("style.load", () => {
+      if (map.getLayer("poi-layer")) map.removeLayer("poi-layer");
       map.setConfigProperty("basemap", "lightPreset", "night");
     });
+
+    //education library
+    const educationMarker = document.createElement("button");
+    educationMarker.className =
+      "bg-green-500 rounded-full w-3 h-3 shadow-lg glow";
+    educationMarker.id = "EducationLibrary";
+
+    educationMarker.onclick = function handleClick() {
+      building.current = educationMarker.id;
+      console.log(building.current);
+    };
+
+    new mapboxgl.Marker(educationMarker)
+      .setLngLat([-86.5124988, 39.1671606])
+      .addClassName("educationLibrary")
+      .addTo(map)
+      .getElement();
+
+    //music library
+    const musicMarker = document.createElement("button");
+    musicMarker.className = "bg-green-500 rounded-full w-3 h-3 shadow-lg glow";
+    musicMarker.id = "MusicLibrary";
+
+    musicMarker.onclick = function handleClick() {
+      building.current = musicMarker.id;
+      console.log(building.current);
+    };
+
+    new mapboxgl.Marker(musicMarker)
+      .setLngLat([-86.5175467, 39.1652557])
+      .addClassName("musicLibrary")
+      .addTo(map)
+      .getElement();
 
     //nealmarshall library
     const nealMarker = document.createElement("button");

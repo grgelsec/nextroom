@@ -117,6 +117,24 @@ const Sidebar = ({ building }: SideBarProps) => {
           ) : (
             <></>
           )}
+          {activeBuilding == "MusicLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              {musicRooms.map((room) => (
+                <RoomCard key={room.room} room={room.room} times={room.times} />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
+          {activeBuilding == "EducationLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              {educationRooms.map((room) => (
+                <RoomCard key={room.room} room={room.room} times={room.times} />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
           {/* <footer className="flex lg:w-full justify-center p-3 h-1/12">
             <button
               className="flex justify-center items-center lg:w-1/4 rounded-lg hover:bg-white/10 hover:ring hover:ring-white duration-300 p-4 shadow-2xl"
