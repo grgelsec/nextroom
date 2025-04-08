@@ -2,10 +2,7 @@
 
 export const getWellsRooms = async () => {
   try {
-    const res = await fetch(`/api/scrape/wells`, {
-      cache: "force-cache",
-      next: { revalidate: 300 },
-    });
+    const res = await fetch(`/api/scrape/wells`);
     const libraryDataRes = await res.json();
     return libraryDataRes.data;
   } catch (error) {
@@ -15,10 +12,7 @@ export const getWellsRooms = async () => {
 
 export const getSpeaRooms = async () => {
   try {
-    const res = await fetch(`/api/scrape/spea`, {
-      cache: "force-cache",
-      next: { revalidate: 300 },
-    });
+    const res = await fetch(`/api/scrape/spea`);
     const speaDataRes = await res.json();
     return speaDataRes.data;
   } catch (error) {
@@ -28,10 +22,7 @@ export const getSpeaRooms = async () => {
 
 export const getSciencesRooms = async () => {
   try {
-    const res = await fetch(`/api/scrape/sciences`, {
-      cache: "force-cache",
-      next: { revalidate: 300 },
-    });
+    const res = await fetch(`/api/scrape/sciences`);
     const sciencesResData = await res.json();
     return sciencesResData.data;
   } catch (error) {
@@ -41,10 +32,7 @@ export const getSciencesRooms = async () => {
 
 export const getNealRooms = async () => {
   try {
-    const res = await fetch(`/api/scrape/neal`, {
-      cache: "force-cache",
-      next: { revalidate: 300 },
-    });
+    const res = await fetch(`/api/scrape/neal`);
     const nealDataRes = await res.json();
     return nealDataRes.data;
   } catch (error) {
@@ -54,10 +42,7 @@ export const getNealRooms = async () => {
 
 export const getMusicRooms = async () => {
   try {
-    const res = await fetch(`/api/scrape/music`, {
-      cache: "force-cache",
-      next: { revalidate: 300 },
-    });
+    const res = await fetch(`/api/scrape/music`);
     const musicResData = await res.json();
     return musicResData.data;
   } catch (error) {
@@ -67,10 +52,7 @@ export const getMusicRooms = async () => {
 
 export const getEducationRooms = async () => {
   try {
-    const res = await fetch(`/api/scrape/education`, {
-      cache: "force-cache",
-      next: { revalidate: 300 },
-    });
+    const res = await fetch(`/api/scrape/education`);
     const educationDataRes = await res.json();
     return educationDataRes.data;
   } catch (error) {

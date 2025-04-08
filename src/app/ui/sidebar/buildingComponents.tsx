@@ -19,6 +19,8 @@ import { RoomCardSkeleton } from "../skeletons/roomCardSkeleton";
 import { RoomErrorComponent } from "./roomError";
 import { notFound } from "next/navigation";
 
+//learned all of this from https://nextjs.org/docs/app/getting-started/fetching-data
+
 /*
 Keep server components focused on:
   Data fetching
