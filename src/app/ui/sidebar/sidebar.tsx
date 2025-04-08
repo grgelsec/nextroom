@@ -9,7 +9,7 @@ import {
   NealMarshall,
   Sciences,
 } from "./buildingComponents";
-import { Suspense } from "react";
+//import { Suspense } from "react";
 import { Book } from "./bookButton";
 import { BuildingTitle } from "./buildingTitle";
 //keys tell react when a component is 'truly new'.
@@ -81,11 +81,61 @@ const Sidebar = ({ building }: SideBarProps) => {
           ) : (
             <></>
           )}
-          {activeBuilding == "SpeaLibrary" ? <SPEA /> : <></>}
-          {activeBuilding == "SciencesLibrary" ? <Sciences /> : <></>}
-          {activeBuilding == "NealLibrary" ? <NealMarshall /> : <></>}
-          {activeBuilding == "MusicLibrary" ? <Music /> : <></>}
-          {activeBuilding == "EducationLibrary" ? <Education /> : <></>}
+          {activeBuilding == "SpeaLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <BuildingTitle name={"Business/SPEA Library"} />
+              <Book link={"https://iub.libcal.com/reserve/spaces/bsic"} />
+              <SPEA />
+            </div>
+          ) : (
+            <></>
+          )}
+          {activeBuilding == "SciencesLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <h1 className="text-xl font-extralight pb-4">
+                IUB Sciences Library
+              </h1>
+              <Book link={"https://iub.libcal.com/reserve/spaces/sciences"} />
+              <Sciences />
+            </div>
+          ) : (
+            <></>
+          )}
+          {activeBuilding == "NealLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <h1 className="text-xl font-extralight pb-4">
+                Neal Marshall Library
+              </h1>
+              <Book
+                link={"https://iub.libcal.com/reserve/spaces/nealmarshall"}
+              />
+              <NealMarshall />
+            </div>
+          ) : (
+            <></>
+          )}
+          {activeBuilding == "MusicLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <h1 className="text-xl font-extralight pb-4">
+                Cook Music Library
+              </h1>
+              <Book link={"https://iub.libcal.com/spaces?lid=14001"} />
+              <Music />
+            </div>
+          ) : (
+            <></>
+          )}
+          {activeBuilding == "EducationLibrary" ? (
+            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+              <h1 className="text-xl font-extralight pb-4">
+                Education Library
+              </h1>
+              <Book link={"https://iub.libcal.com/reserve/spaces/education"} />
+              <Education />
+            </div>
+          ) : (
+            <></>
+          )}
         </motion.div>
       ) : (
         <motion.div
