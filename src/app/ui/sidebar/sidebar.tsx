@@ -147,12 +147,17 @@ const Sidebar = ({ building }: SideBarProps) => {
           className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2 font-extralight rounded-lg"
         >
           <header className="flex lg:w-full h-2/12 justify-center p-4">
-            <div className="flex justify-center items-center w-full rounded-lg shadow-2xl">
-              <h1 className="text-white text-5xl font-thin">Nextroom</h1>
+            <div className="flex justify-center items-center w-full rounded-lg flex-wrap shadow-2xl p-4">
+              <h1 className="text-white text-5xl font-thin  w-full">
+                Nextroom
+                <p className="text-white text-lg font-thin ">
+                  Find study spots with ease
+                </p>
+              </h1>
             </div>
           </header>
           <div className="flex flex-col lg:w-full h-9/12 justify-center p-4 space-y-4">
-            <div className="flex lg:w-full h-1/2  p-2">
+            <div className="flex lg:w-full h-1/2 p-2 shadow-2xl">
               This will be a hero section.
             </div>
             <div className="flex lg:w-full h-1/2  p-2"></div>

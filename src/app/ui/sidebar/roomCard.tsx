@@ -20,7 +20,7 @@ export const RoomCard = ({ room, times }: room) => {
         className="flex flex-col lg:w-full lg:p-4 w-full p-4 bg-[#191919] shadow-2xl rounded-md space-y-4 font-extralight"
       >
         <div>
-          <h1 className="flex justify-items-start lg:w-full ">
+          <h1 className="flex justify-items-start lg:w-full space-x-4 ">
             <div className="space-x-2 flex lg:w-full text-md ">
               <div>{room}</div>
               <div>
