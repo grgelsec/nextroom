@@ -6,15 +6,10 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 
 - Stick with the current design I have in figma.
 - Implement these features in order
-  - Full availbility view page with all rooms and their availabilities.
   - Hosting in a container/aws
-  - When clicking on a building with w specific marker, the name is injected into the side bar which triggers a hook
-  -
 
 ## TODO
 
-- Make skeleton fall back components for loading data
 - Fix mobile view
-- make markers display red or green depending on if there are rooms available or not
 - Finish landing for the sidebar
 - Host

@@ -36,7 +36,6 @@ export default function Page() {
 
     educationMarker.onclick = function handleClick() {
       building.current = educationMarker.id;
-      console.log(building.current);
     };
 
     new mapboxgl.Marker(educationMarker)
@@ -52,7 +51,6 @@ export default function Page() {
 
     musicMarker.onclick = function handleClick() {
       building.current = musicMarker.id;
-      console.log(building.current);
     };
 
     new mapboxgl.Marker(musicMarker)
@@ -68,7 +66,6 @@ export default function Page() {
 
     nealMarker.onclick = function handleClick() {
       building.current = nealMarker.id;
-      console.log(building.current);
     };
 
     new mapboxgl.Marker(nealMarker)
@@ -85,7 +82,6 @@ export default function Page() {
 
     sciencesMarker.onclick = function handleClick() {
       building.current = sciencesMarker.id;
-      console.log(building.current);
     };
 
     new mapboxgl.Marker(sciencesMarker)
@@ -101,7 +97,6 @@ export default function Page() {
 
     speaMarker.onclick = function handleClick() {
       building.current = speaMarker.id;
-      console.log(building.current);
     };
 
     new mapboxgl.Marker(speaMarker)
@@ -117,7 +112,6 @@ export default function Page() {
 
     wellsMarker.onclick = function handleClick() {
       building.current = wellsMarker.id;
-      console.log(building.current);
     };
 
     new mapboxgl.Marker(wellsMarker)

@@ -1,3 +1,4 @@
+"use client";
 import { room } from "@/app/types";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -21,7 +22,7 @@ export const RoomCard = ({ room, times }: room) => {
         <div>
           <h1 className="flex justify-items-start lg:w-full ">
             <div className="space-x-2 flex lg:w-full text-md ">
-              <div>{room}</div>
+              <div className="">{room}</div>
               <div>
                 {times
                   .slice(1, 2)
