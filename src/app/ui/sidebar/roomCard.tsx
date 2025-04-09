@@ -22,7 +22,7 @@ export const RoomCard = ({ room, times }: room) => {
         <div>
           <h1 className="flex justify-items-start lg:w-full ">
             <div className="space-x-2 flex lg:w-full text-md ">
-              <div className="">{room}</div>
+              <div>{room}</div>
               <div>
                 {times
                   .slice(1, 2)
