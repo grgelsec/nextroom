@@ -66,14 +66,14 @@ const Sidebar = ({ building }: SideBarProps) => {
           exit={{ opacity: 0, y: 100 }}
           transition={transition}
           key={"inactive"}
-          className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2  items-end rounded-lg overflow-scroll"
+          className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2 lg:items-end items-center justify-center rounded-lg overflow-scroll p-4"
         >
           <header className="flex lg:w-full justify-center p-4 h-1/12 space-x-4 text-white font-extralight items-end">
             <p>Available: ✅</p>
             <p>Booked: 🚫</p>
           </header>
           {activeBuilding == "WellsLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center ">
+            <div className="flex flex-col lg:w-full w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
               <BuildingTitle name={"Wells Library"} />
               <Book link={"https://iub.libcal.com/reserve/spaces/wells"} />
               <Wells />
@@ -82,7 +82,7 @@ const Sidebar = ({ building }: SideBarProps) => {
             <></>
           )}
           {activeBuilding == "SpeaLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+            <div className="flex flex-col lg:w-full w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
               <BuildingTitle name={"Business/SPEA Library"} />
               <Book link={"https://iub.libcal.com/reserve/spaces/bsic"} />
               <SPEA />
@@ -91,7 +91,7 @@ const Sidebar = ({ building }: SideBarProps) => {
             <></>
           )}
           {activeBuilding == "SciencesLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+            <div className="flex flex-col lg:w-full w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
               <h1 className="text-xl font-extralight pb-4">
                 IUB Sciences Library
               </h1>
@@ -102,7 +102,7 @@ const Sidebar = ({ building }: SideBarProps) => {
             <></>
           )}
           {activeBuilding == "NealLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+            <div className="flex flex-col lg:w-full w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
               <h1 className="text-xl font-extralight pb-4">
                 Neal Marshall Library
               </h1>
@@ -115,7 +115,7 @@ const Sidebar = ({ building }: SideBarProps) => {
             <></>
           )}
           {activeBuilding == "MusicLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+            <div className="flex flex-col lg:w-full w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
               <h1 className="text-xl font-extralight pb-4">
                 Cook Music Library
               </h1>
@@ -126,7 +126,7 @@ const Sidebar = ({ building }: SideBarProps) => {
             <></>
           )}
           {activeBuilding == "EducationLibrary" ? (
-            <div className="flex flex-col lg:w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
+            <div className="flex flex-col lg:w-full w-full h-11/12 p-6 space-y-4 overflow-scroll items-center">
               <h1 className="text-xl font-extralight pb-4">
                 Education Library
               </h1>

@@ -17,7 +17,7 @@ export const RoomCard = ({ room, times }: room) => {
           duration: 0.6,
           ease: easeInOut,
         }}
-        className="flex flex-col lg:w-full p-4 bg-[#191919] shadow-2xl rounded-md space-y-4 font-extralight"
+        className="flex flex-col lg:w-full lg:p-4 w-full p-4 bg-[#191919] shadow-2xl rounded-md space-y-4 font-extralight"
       >
         <div>
           <h1 className="flex justify-items-start lg:w-full ">
@@ -37,7 +37,7 @@ export const RoomCard = ({ room, times }: room) => {
             </div>
             <motion.button
               whileTap={{ rotate: 3 }}
-              className="flex w-1/2 justify-end"
+              className="flex lg:w-1/2 w-3/4 justify-end"
               onClick={(e) => {
                 e.preventDefault();
                 setCardExtend(!cardExtend);
