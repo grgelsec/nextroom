@@ -12,6 +12,7 @@ import {
 //import { Suspense } from "react";
 import { Book } from "./bookButton";
 import { BuildingTitle } from "./buildingTitle";
+import Image from "next/image";
 //keys tell react when a component is 'truly new'.
 
 interface SideBarProps {
@@ -68,7 +69,7 @@ const Sidebar = ({ building }: SideBarProps) => {
           key={"inactive"}
           className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2 lg:items-end items-center justify-center rounded-lg overflow-scroll p-4"
         >
-          <header className="flex lg:w-full justify-center p-4 h-1/12 space-x-4 text-white font-extralight items-end">
+          <header className="flex lg:w-full justify-center p-2 h-1/12 space-x-4 text-white font-extralight items-end">
             <p>Available: ✅</p>
             <p>Booked: 🚫</p>
           </header>
@@ -144,23 +145,45 @@ const Sidebar = ({ building }: SideBarProps) => {
           exit={{ opacity: 0 }}
           transition={transition}
           key={"active"}
-          className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2 font-extralight rounded-lg"
+          className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2 font-extralight rounded-lg overflow-y-scroll space-y-4"
         >
           <header className="flex lg:w-full h-2/12 justify-center p-4">
             <div className="flex justify-center items-center w-full rounded-lg flex-wrap shadow-2xl p-4">
-              <h1 className="text-white text-5xl font-thin  w-full">
+              <h1 className="text-white text-5xl font-thin w-full">
                 Nextroom
-                <p className="text-white text-lg font-thin ">
+                <p className="text-white text-lg font-thin mt-1">
                   Find study spots with ease
                 </p>
               </h1>
             </div>
           </header>
-          <div className="flex flex-col lg:w-full h-9/12 justify-center p-4 space-y-4">
-            <div className="flex lg:w-full h-1/2 p-2 shadow-2xl">
-              This will be a hero section.
+          <div className="flex flex-col lg:w-full w-full h-9/12 p-4 space-y-4">
+            <div className="flex lg:w-full w-full shadow-2xl flex-wrap p-4 space-y-4">
+              <h1 className="font-extralight text-2xl lg:w-full w-full text-white">
+                Welcome!
+              </h1>
+              <p>
+                This is Nextroom, room availability browsing made easier for
+                students at Indiana University!
+              </p>
             </div>
-            <div className="flex lg:w-full h-1/2  p-2"></div>
+            <div className="flex lg:w-full w-full shadow-2xl flex-wrap p-4 space-y-4">
+              <h1 className="font-extralight text-2xl lg:w-full w-full text-white">
+                How do I use this?
+              </h1>
+              <p>
+                On the map interact with the green markers located on the
+                library that you would like to check for study spots!
+              </p>
+
+              <Image
+                width={500}
+                height={500}
+                className="rounded-lg"
+                src={"/resPrev.png"}
+                alt="Wells reservations example"
+              />
+            </div>
           </div>
         </motion.div>
       )}

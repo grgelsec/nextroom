@@ -15,8 +15,8 @@ export default function Page() {
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/standard",
-      center: [-86.5167, 39.171],
-      zoom: 17,
+      center: [-86.5179, 39.169],
+      zoom: 16,
       pitch: 60,
       bearing: 225,
       dragPan: true,
