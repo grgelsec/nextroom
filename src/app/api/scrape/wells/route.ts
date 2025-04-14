@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getWellsData } from "@/app/services/WellsLibraryRooms";
 
-export async function GET(res: NextResponse) {
+export async function GET(req: NextRequest, res: NextResponse) {
   try {
     const data = await getWellsData();
     return NextResponse.json({ status: res.status, success: true, data: data });

@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getEducationData } from "@/app/services/educationLibrary";
 
-export const GET = async (res: NextResponse) => {
+export const GET = async (req: NextRequest, res: NextResponse) => {
   try {
     const data = await getEducationData();
     return NextResponse.json({
