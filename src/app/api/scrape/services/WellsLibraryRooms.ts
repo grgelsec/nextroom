@@ -1,7 +1,6 @@
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import { room } from "@/app/types";
 import Chromium from "@sparticuz/chromium";
-//import puppeteer from "puppeteer-core";
 
 export const getWellsData = async () => {
   //Browser Setup
