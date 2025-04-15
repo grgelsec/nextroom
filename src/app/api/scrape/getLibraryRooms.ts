@@ -3,7 +3,6 @@
 export const getWellsRooms = async () => {
   try {
     const res = await fetch(`/api/scrape/wells`, {
-      cache: "force-cache",
       next: { revalidate: 300 },
     });
     const libraryDataRes = await res.json();
@@ -16,7 +15,6 @@ export const getWellsRooms = async () => {
 export const getSpeaRooms = async () => {
   try {
     const res = await fetch(`/api/scrape/spea`, {
-      cache: "force-cache",
       next: { revalidate: 300 },
     });
     const speaDataRes = await res.json();
@@ -29,7 +27,6 @@ export const getSpeaRooms = async () => {
 export const getSciencesRooms = async () => {
   try {
     const res = await fetch(`/api/scrape/sciences`, {
-      cache: "force-cache",
       next: { revalidate: 300 },
     });
     const sciencesResData = await res.json();
@@ -42,7 +39,6 @@ export const getSciencesRooms = async () => {
 export const getNealRooms = async () => {
   try {
     const res = await fetch(`/api/scrape/neal`, {
-      cache: "force-cache",
       next: { revalidate: 300 },
     });
     const nealDataRes = await res.json();
@@ -55,7 +51,6 @@ export const getNealRooms = async () => {
 export const getMusicRooms = async () => {
   try {
     const res = await fetch(`/api/scrape/music`, {
-      cache: "force-cache",
       next: { revalidate: 300 },
     });
     const musicResData = await res.json();
@@ -68,7 +63,6 @@ export const getMusicRooms = async () => {
 export const getEducationRooms = async () => {
   try {
     const res = await fetch(`/api/scrape/education`, {
-      cache: "force-cache",
       next: { revalidate: 300 },
     });
     const educationDataRes = await res.json();
