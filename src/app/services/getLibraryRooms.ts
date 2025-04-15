@@ -1,9 +1,8 @@
 //import { room } from "../types";
 
 export const getWellsRooms = async () => {
-  const url = process.env.NEXT_PUBLIC_URL;
   try {
-    const res = await fetch(`${url}/api/scrape/wells`, {
+    const res = await fetch(`/api/scrape/wells`, {
       cache: "force-cache",
       next: { revalidate: 300 },
     });
@@ -15,9 +14,8 @@ export const getWellsRooms = async () => {
 };
 
 export const getSpeaRooms = async () => {
-  const url = process.env.NEXT_PUBLIC_URL;
   try {
-    const res = await fetch(`${url}/api/scrape/spea`, {
+    const res = await fetch(`/api/scrape/spea`, {
       cache: "force-cache",
       next: { revalidate: 300 },
     });
@@ -29,9 +27,8 @@ export const getSpeaRooms = async () => {
 };
 
 export const getSciencesRooms = async () => {
-  const url = process.env.NEXT_PUBLIC_URL;
   try {
-    const res = await fetch(`${url}/api/scrape/sciences`, {
+    const res = await fetch(`/api/scrape/sciences`, {
       cache: "force-cache",
       next: { revalidate: 300 },
     });
@@ -43,9 +40,8 @@ export const getSciencesRooms = async () => {
 };
 
 export const getNealRooms = async () => {
-  const url = process.env.NEXT_PUBLIC_URL;
   try {
-    const res = await fetch(`${url}/api/scrape/neal`, {
+    const res = await fetch(`/api/scrape/neal`, {
       cache: "force-cache",
       next: { revalidate: 300 },
     });
@@ -57,9 +53,8 @@ export const getNealRooms = async () => {
 };
 
 export const getMusicRooms = async () => {
-  const url = process.env.NEXT_PUBLIC_URL;
   try {
-    const res = await fetch(`${url}/api/scrape/music`, {
+    const res = await fetch(`/api/scrape/music`, {
       cache: "force-cache",
       next: { revalidate: 300 },
     });
@@ -71,9 +66,8 @@ export const getMusicRooms = async () => {
 };
 
 export const getEducationRooms = async () => {
-  const url = process.env.NEXT_PUBLIC_URL;
   try {
-    const res = await fetch(`${url}/api/scrape/education`, {
+    const res = await fetch(`/api/scrape/education`, {
       cache: "force-cache",
       next: { revalidate: 300 },
     });
