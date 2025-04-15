@@ -1,12 +1,15 @@
-import puppeteer from "puppeteer";
 import { room } from "@/app/types";
+import Chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-core";
 
 export const getSpeaData = async () => {
   //Browser Setup
   try {
     const browser = await puppeteer.launch({
-      headless: true,
-      defaultViewport: null,
+      args: Chromium.args,
+      executablePath: await Chromium.executablePath(),
+      headless: Chromium.headless,
+      defaultViewport: Chromium.defaultViewport,
     });
 
     //Page Creation

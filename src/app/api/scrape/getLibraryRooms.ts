@@ -2,7 +2,10 @@
 
 export const getWellsRooms = async () => {
   try {
-    const res = await fetch(`/api/scrape/wells`);
+    const res = await fetch(`/api/scrape/wells`, {
+      cache: "force-cache",
+      next: { revalidate: 300 },
+    });
     const libraryDataRes = await res.json();
     return libraryDataRes.data;
   } catch (error) {

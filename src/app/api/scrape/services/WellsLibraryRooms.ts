@@ -6,14 +6,13 @@ import puppeteer from "puppeteer-core";
 export const getWellsData = async () => {
   //Browser Setup
 
-  const browser = await puppeteer.launch({
-    args: Chromium.args,
-    executablePath: await Chromium.executablePath(),
-    headless: Chromium.headless,
-    defaultViewport: null,
-  });
-
   try {
+    const browser = await puppeteer.launch({
+      args: Chromium.args,
+      executablePath: await Chromium.executablePath(),
+      headless: Chromium.headless,
+      defaultViewport: null,
+    });
     //Page Creation
     const page = await browser.newPage();
 
