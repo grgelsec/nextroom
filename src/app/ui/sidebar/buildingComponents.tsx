@@ -1,11 +1,11 @@
 import {
   getWellsRooms,
-  getSpeaRooms,
   getEducationRooms,
   getMusicRooms,
-  getNealRooms,
   getSciencesRooms,
-} from "@/app/services/getLibraryRooms";
+  getNealRooms,
+  getSpeaRooms,
+} from "@/app/api/scrape/getLibraryRooms";
 import { Suspense } from "react";
 import {
   EducationRooms,

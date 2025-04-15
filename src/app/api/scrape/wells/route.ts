@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getWellsData } from "@/app/services/WellsLibraryRooms";
+import { getWellsData } from "../services/WellsLibraryRooms";
 
 export const GET = async (req: NextRequest) => {
   console.log(req);

@@ -1,4 +1,4 @@
-import { getNealData } from "@/app/services/nealLibrary";
+import { getNealData } from "../services/nealLibrary";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest) => {

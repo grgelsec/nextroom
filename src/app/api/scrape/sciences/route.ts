@@ -1,4 +1,4 @@
-import { getSciencesData } from "@/app/services/sciencesLibrary";
+import { getSciencesData } from "../services/sciencesLibrary";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest) => {

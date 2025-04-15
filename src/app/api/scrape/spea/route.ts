@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSpeaData } from "@/app/services/SpeaLibrary";
+import { getSpeaData } from "../services/SpeaLibrary";
 
 //error instanceof Error checks if error is a apart of an object. If thats true then you can treat error as that object allowing us to use error.message
 

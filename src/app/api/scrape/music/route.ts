@@ -1,4 +1,4 @@
-import { getMusicData } from "@/app/services/musicLibrary";
+import { getMusicData } from "../services/musicLibrary";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest) => {
