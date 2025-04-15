@@ -1,16 +1,24 @@
+import puppeteer from "puppeteer";
 import { room } from "@/app/types";
 import Chromium from "@sparticuz/chromium";
-import puppeteer from "puppeteer-core";
 
 export const getSciencesData = async () => {
   //Browser Setup
   try {
-    const browser = await puppeteer.launch({
-      args: Chromium.args,
-      executablePath: await Chromium.executablePath(),
-      headless: Chromium.headless,
-      defaultViewport: Chromium.defaultViewport,
-    });
+    let browser = undefined;
+    if (process.env.NEXT_PUBLIC_APP_ENVIRONMENT == "development") {
+      browser = await puppeteer.launch({
+        headless: true,
+        defaultViewport: null,
+      });
+    } else {
+      browser = await puppeteer.launch({
+        args: Chromium.args,
+        executablePath: await Chromium.executablePath(),
+        headless: Chromium.headless,
+        defaultViewport: Chromium.defaultViewport,
+      });
+    }
 
     //Page Creation
     const page = await browser.newPage();
