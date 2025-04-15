@@ -1,4 +1,4 @@
-import puppeteer, { Browser } from "puppeteer";
+import puppeteer from "puppeteer";
 import { room } from "../types";
 import chromium from "@sparticuz/chromium-min";
 import puppeteerCore from "puppeteer-core";
