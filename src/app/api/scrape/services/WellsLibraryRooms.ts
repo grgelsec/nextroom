@@ -24,8 +24,18 @@ export const getWellsData = async () => {
     const page = await browser.newPage();
 
     //Navigation with while loading for dynamic data
+    await page.setRequestInterception(true);
+    page.on("request", (req) => {
+      const block = ["image", "stylesheet", "font"];
+      if (block.includes(req.resourceType())) {
+        req.abort();
+      } else {
+        req.continue();
+      }
+    });
     await page.goto("https://iub.libcal.com/reserve/wells");
     await page.waitForSelector("a.fc-timeline-event");
+    await page.setJavaScriptEnabled(false);
 
     //data extraction
     const scrapedData: room[] = await page.evaluate(() => {
