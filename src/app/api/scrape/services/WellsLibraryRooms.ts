@@ -25,7 +25,7 @@ export const getWellsData = async () => {
 
     //Navigation with while loading for dynamic data
     await page.goto("https://iub.libcal.com/reserve/wells", {
-      waitUntil: "networkidle0",
+      waitUntil: "networkidle2",
     });
 
     //data extraction
