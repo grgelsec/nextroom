@@ -36,9 +36,9 @@ export const Wells = () => {
   try {
     const wellsData = getWellsRooms();
 
-    if (!wellsData) {
-      notFound();
-    }
+    // if (!wellsData) {
+    //   notFound();
+    // }
 
     //If you try to resolve a promise in the same component then the suspension is already reached and so the streaming wont work because the fallback components wont render because once the promise resolves then the suspense boundery is pointless.
 
