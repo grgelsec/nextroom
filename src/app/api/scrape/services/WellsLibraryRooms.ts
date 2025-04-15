@@ -1,26 +1,17 @@
-import puppeteer from "puppeteer";
+//import puppeteer from "puppeteer";
 import { room } from "@/app/types";
-import chromium from "@sparticuz/chromium-min";
-import puppeteerCore from "puppeteer-core";
+import Chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-core";
 
 export const getWellsData = async () => {
   //Browser Setup
 
-  let browser = undefined;
-
-  if (process.env.NEXT_PUBLIC_VERCEL_ENVIRONMENT === "production") {
-    browser = await puppeteerCore.launch({
-      args: chromium.args,
-      executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
-    });
-    return browser;
-  } else {
-    browser = await puppeteer.launch({
-      headless: true,
-      defaultViewport: null,
-    });
-  }
+  const browser = await puppeteer.launch({
+    args: Chromium.args,
+    executablePath: await Chromium.executablePath(),
+    headless: Chromium.headless,
+    defaultViewport: null,
+  });
 
   try {
     //Page Creation
