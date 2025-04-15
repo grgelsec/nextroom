@@ -10,6 +10,5 @@ The point of this project is to expose me to Next.js and try my best to exhaust 
 
 ## TODO
 
-- Fix mobile view
 - Finish landing for the sidebar
 - Host
