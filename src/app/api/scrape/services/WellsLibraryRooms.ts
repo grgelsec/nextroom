@@ -11,14 +11,14 @@ export const getWellsData = async () => {
       args: Chromium.args,
       executablePath: await Chromium.executablePath(),
       headless: Chromium.headless,
-      defaultViewport: null,
+      defaultViewport: Chromium.defaultViewport,
     });
     //Page Creation
     const page = await browser.newPage();
 
     //Navigation with while loading for dynamic data
     await page.goto("https://iub.libcal.com/reserve/wells", {
-      waitUntil: "networkidle0",
+      waitUntil: "domcontentloaded",
     });
 
     //data extraction
