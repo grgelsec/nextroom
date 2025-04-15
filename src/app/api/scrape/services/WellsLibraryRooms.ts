@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 import { room } from "@/app/types";
 import Chromium from "@sparticuz/chromium";
 
@@ -24,9 +24,8 @@ export const getWellsData = async () => {
     const page = await browser.newPage();
 
     //Navigation with while loading for dynamic data
-    await page.goto("https://iub.libcal.com/reserve/wells", {
-      waitUntil: "networkidle2",
-    });
+    await page.goto("https://iub.libcal.com/reserve/wells");
+    await page.waitForSelector("a.fc-timeline-event");
 
     //data extraction
     const scrapedData: room[] = await page.evaluate(() => {
