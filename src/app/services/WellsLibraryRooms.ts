@@ -1,14 +1,29 @@
-import puppeteer from "puppeteer";
+import puppeteer, { Browser } from "puppeteer";
 import { room } from "../types";
+import chromium from "@sparticuz/chromium-min";
+import puppeteerCore from "puppeteer-core";
 
 export const getWellsData = async () => {
+  const remoteExecutablePath = `https://github.com/Sparticuz/chromium/releases/download/v121.0.0/chromium-v121.0.0-pack.tar`;
   //Browser Setup
-  try {
-    const browser = await puppeteer.launch({
+
+  let browser = undefined;
+
+  if (process.env.NEXT_PUBLIC_VERCEL_ENVIRONMENT === "production") {
+    browser = await puppeteerCore.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(remoteExecutablePath),
+      headless: true,
+    });
+    return browser;
+  } else {
+    browser = await puppeteer.launch({
       headless: true,
       defaultViewport: null,
     });
+  }
 
+  try {
     //Page Creation
     const page = await browser.newPage();
 
