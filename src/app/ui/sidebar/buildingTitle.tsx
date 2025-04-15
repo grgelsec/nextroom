@@ -1,3 +1,4 @@
+"use client";
 import { easeInOut, motion } from "framer-motion";
 type buildingName = { name: string };
 export const BuildingTitle = ({ name }: buildingName) => {
