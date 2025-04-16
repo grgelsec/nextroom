@@ -8,7 +8,7 @@ export const Book = ({ link }: reservationLink) => {
     <Link
       target="_blank"
       href={`${link}`}
-      className="flex lg:w-full justify-center items-center bg-[#191919] shadow-2xl rounded-md p-2 font-extralight space-x-2 hover:ring hover:opacity-80 duration-300"
+      className="flex lg:w-full justify-center items-center bg-[#191919] shadow-2xl rounded-md lg:p-2 py-2 px-4 font-extralight space-x-2 hover:ring hover:opacity-80 duration-300"
     >
       <p>Book now</p>
       <svg
