@@ -124,10 +124,10 @@ export default function Page() {
   });
 
   return (
-    <div className="flex flex-col flex-wrap w-screen h-screen overflow-scroll space-x-2 lg:px-4 lg:py-2">
+    <div className="flex flex-col flex-wrap w-screen h-screen overflow-scroll space-x-2 lg:px-4 lg:py-2 p-2">
       <Sidebar building={building} />
       <div
-        className="flex lg:w-3/4 md:w-3/4 w-full lg:h-full md:h-full h-1/2 lg:rounded-lg items-start justify-center"
+        className="flex lg:w-3/4 md:w-3/4 w-full lg:h-full md:h-full h-1/2 lg:rounded-lg items-start justify-center rounded-lg"
         id="map"
       ></div>
     </div>

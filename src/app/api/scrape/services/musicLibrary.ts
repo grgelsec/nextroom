@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import { room } from "@/app/types";
 import Chromium from "@sparticuz/chromium";
 
@@ -22,11 +22,19 @@ export const getMusicData = async () => {
 
     //Page Creation
     const page = await browser.newPage();
-
-    //Navigation with while loading for dynamic data
-    await page.goto("https://iub.libcal.com/spaces?lid=14001", {
-      waitUntil: "networkidle0",
+    await page.setRequestInterception(true);
+    page.on("request", (req) => {
+      const block = ["image", "stylesheet", "font"];
+      if (block.includes(req.resourceType())) {
+        req.abort();
+      } else {
+        req.continue();
+      }
     });
+    //Navigation with while loading for dynamic data
+    await page.goto("https://iub.libcal.com/spaces?lid=14001");
+    await page.waitForSelector("a.fc-timeline-event");
+    await page.setJavaScriptEnabled(false);
 
     //data extraction
     const scrapedData: room[] = await page.evaluate(() => {
