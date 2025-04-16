@@ -145,10 +145,10 @@ const Sidebar = ({ building }: SideBarProps) => {
           exit={{ opacity: 0 }}
           transition={transition}
           key={"active"}
-          className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2 font-extralight rounded-lg overflow-y-scroll space-y-4"
+          className="flex flex-col flex-wrap lg:w-1/4 md:w-1/4 w-full lg:h-full md:h-full h-1/2 font-extralight rounded-lg overflow-y-scroll lg:space-y-1 space-y-8"
         >
-          <header className="flex lg:w-full h-2/12 justify-center p-4">
-            <div className="flex justify-center items-center w-full rounded-lg flex-wrap shadow-2xl p-4">
+          <header className="flex lg:w-full h-2/12 justify-center p-4 flex-wrap">
+            <div className="flex justify-center items-center w-full rounded-lg flex-wrap lg:shadow-xl shadow-lg p-4">
               <h1 className="text-white text-5xl font-thin w-full">
                 Nextroom
                 <p className="text-white text-lg font-thin mt-1">
@@ -158,7 +158,7 @@ const Sidebar = ({ building }: SideBarProps) => {
             </div>
           </header>
           <div className="flex flex-col lg:w-full w-full h-9/12 p-4 space-y-4">
-            <div className="flex lg:w-full w-full shadow-2xl flex-wrap p-4 space-y-4">
+            <div className="flex lg:w-full w-full lg:shadow-xl shadow-lg flex-wrap p-4 space-y-4 rounded-lg">
               <h1 className="font-extralight text-2xl lg:w-full w-full text-white">
                 Welcome!
               </h1>
@@ -167,7 +167,7 @@ const Sidebar = ({ building }: SideBarProps) => {
                 students at Indiana University!
               </p>
             </div>
-            <div className="flex lg:w-full w-full shadow-2xl flex-wrap p-4 space-y-4">
+            <div className="flex lg:w-full w-full lg:shadow-xl shadow-lg flex-wrap p-4 space-y-4 rounded-lg">
               <h1 className="font-extralight text-2xl lg:w-full w-full text-white">
                 How do I use this?
               </h1>
