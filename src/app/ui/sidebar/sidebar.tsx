@@ -158,7 +158,7 @@ const Sidebar = ({ building }: SideBarProps) => {
             </div>
           </header>
           <div className="flex flex-col lg:w-full w-full h-9/12 p-4 space-y-4">
-            <div className="flex lg:w-full w-full lg:shadow-xl shadow-lg flex-wrap p-4 space-y-4 rounded-lg">
+            <div className="flex lg:w-full w-full lg:shadow-xl shadow-lg flex-wrap p-4 space-y-4 rounded-lg mt-5">
               <h1 className="font-extralight text-2xl lg:w-full w-full text-white">
                 Welcome!
               </h1>
